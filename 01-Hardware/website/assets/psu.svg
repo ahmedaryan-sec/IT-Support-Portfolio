@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 200" fill="none">
+<rect x="20" y="30" width="210" height="140" rx="6" fill="#1a1f2e" stroke="#b5f23d" stroke-width="2"/>
+<circle cx="80" cy="100" r="40" fill="#0b0f14" stroke="#b5f23d" stroke-width="1.5"/>
+<g stroke="#b5f23d" stroke-width="2" fill="none">
+  <line x1="80" y1="70" x2="80" y2="130"/>
+  <line x1="50" y1="100" x2="110" y2="100"/>
+  <line x1="60" y1="80" x2="100" y2="120"/>
+  <line x1="100" y1="80" x2="60" y2="120"/>
+</g>
+<rect x="140" y="50" width="70" height="30" rx="4" fill="#0b0f14" stroke="#b5f23d" stroke-width="1"/>
+<text x="175" y="70" text-anchor="middle" fill="#b5f23d" font-size="10" font-family="monospace">AC IN</text>
+<rect x="140" y="90" width="70" height="30" rx="4" fill="#0b0f14" stroke="#b5f23d" stroke-width="1"/>
+<text x="175" y="110" text-anchor="middle" fill="#b5f23d" font-size="10" font-family="monospace">80+ GOLD</text>
+<rect x="140" y="130" width="70" height="25" rx="4" fill="#0b0f14" stroke="#b5f23d" stroke-width="1"/>
+<text x="175" y="147" text-anchor="middle" fill="#9aa8b8" font-size="9" font-family="monospace">650W</text>
+</svg>
