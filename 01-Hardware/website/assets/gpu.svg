@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 180" fill="none">
+<rect x="10" y="40" width="280" height="100" rx="6" fill="#1a1f2e" stroke="#b5f23d" stroke-width="2"/>
+<rect x="30" y="60" width="90" height="60" rx="4" fill="#0b0f14" stroke="#b5f23d" stroke-width="1"/>
+<text x="75" y="95" text-anchor="middle" fill="#b5f23d" font-size="11" font-family="monospace" font-weight="bold">GPU</text>
+<g fill="#2a3a4e" stroke="#b5f23d" stroke-width="0.5">
+  <circle cx="160" cy="75" r="15"/>
+  <circle cx="200" cy="75" r="15"/>
+  <circle cx="240" cy="75" r="15"/>
+</g>
+<text x="200" y="120" text-anchor="middle" fill="#9aa8b8" font-size="9" font-family="monospace">COOLING FANS</text>
+<rect x="100" y="140" width="80" height="10" rx="2" fill="#b5f23d" opacity="0.3"/>
+<text x="140" y="165" text-anchor="middle" fill="#9aa8b8" font-size="8" font-family="monospace">PCIe x16</text>
+<rect x="250" y="45" width="30" height="12" rx="2" fill="#2a3a4e"/>
+<rect x="250" y="62" width="30" height="12" rx="2" fill="#2a3a4e"/>
+</svg>
