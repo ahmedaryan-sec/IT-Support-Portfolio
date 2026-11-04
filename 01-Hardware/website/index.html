@@ -1,1 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Hardware Fundamentals - Interactive IT Support Knowledge Base for Help Desk & L1 Technicians">
+<title>Hardware Fundamentals — IT Support Knowledge Base</title>
+<link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- Reading Progress Bar -->
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- Navigation -->
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="#overview" class="nav-logo">
+      <span class="logo-dot"></span>HW<span class="logo-accent">.docs</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#overview" class="nav-link active">Overview</a></li>
+      <li><a href="#motherboard" class="nav-link">Motherboard</a></li>
+      <li><a href="#components" class="nav-link">Components</a></li>
+      <li><a href="#troubleshooting" class="nav-link">Troubleshooting</a></li>
+      <li><a href="#commands" class="nav-link">Commands</a></li>
+      <li><a href="#checklist" class="nav-link">Checklist</a></li>
+    </ul>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- SECTION 01 — OVERVIEW -->
+<section id="overview" class="section hero">
+  <div class="container hero-grid">
+    <div class="hero-content reveal">
+      <div class="hero-badge">
+        <span class="status-dot"></span> IT Support · L1 Field Guide
+      </div>
+      <h1 class="hero-title">
+        Hardware <span class="accent">Fundamentals</span>
+      </h1>
+      <p class="hero-subtitle">IT Support Knowledge Base</p>
+      <p class="hero-description">
+        A structured, field-tested reference covering core PC hardware architecture,
+        diagnostic procedures, and evidence-based troubleshooting workflows for
+        Help Desk and Level 1 Support technicians.
+      </p>
+      <div class="hero-cta">
+        <a href="#components" class="btn btn-primary">Explore Components →</a>
+        <a href="#troubleshooting" class="btn btn-secondary">Troubleshooting Guide</a>
+      </div>
+      <div class="hero-meta">
+        <div class="meta-item">
+          <span class="meta-label">Knowledge Area</span>
+          <span class="meta-value">PC Hardware</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Target Level</span>
+          <span class="meta-value">Help Desk / L1</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Format</span>
+          <span class="meta-value">Technical Field Guide</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual reveal">
+      <div class="visual-frame">
+        <img src="assets/motherboard.svg" alt="Motherboard architecture diagram" class="hero-image">
+        <div class="visual-tag tag-1">CPU Socket</div>
+        <div class="visual-tag tag-2">DIMM Slots</div>
+        <div class="visual-tag tag-3">PCIe</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 02 — MOTHERBOARD -->
+<section id="motherboard" class="section">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-number">// 02</span>
+      <h2 class="section-title">The Motherboard</h2>
+      <p class="section-subtitle">The backbone of every computer system</p>
+    </div>
+    
+    <div class="split-layout">
+      <div class="split-visual reveal">
+        <img src="assets/motherboard.svg" alt="Motherboard" class="split-image">
+      </div>
+      <div class="split-content reveal">
+        <h3>Architecture & Function</h3>
+        <p class="lead">
+          The motherboard is the primary printed circuit board that routes power and
+          data between every component in a computer system. Understanding its layout
+          is foundational for every hardware diagnostic workflow.
+        </p>
+
+        <div class="feature-list">
+          <div class="feature-item">
+            <span class="feature-icon">◆</span>
+            <div>
+              <strong>CPU Socket</strong>
+              <p>Physical and electrical interface for the processor (e.g., Intel LGA 1700, AMD AM5).</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <span class="feature-icon">◆</span>
+            <div>
+              <strong>DIMM Slots</strong>
+              <p>Dual In-line Memory Module slots for installing RAM. Dual-channel configurations typically use matched pairs.</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <span class="feature-icon">◆</span>
+            <div>
+              <strong>PCIe Slots</strong>
+              <p>High-speed expansion slots for graphics cards, network cards, and other add-in boards.</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <span class="feature-icon">◆</span>
+            <div>
+              <strong>SATA & M.2 Connectors</strong>
+              <p>SATA connects 2.5" drives; M.2 slots host high-speed NVMe SSDs directly on the board.</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <span class="feature-icon">◆</span>
+            <div>
+              <strong>Power Connectors</strong>
+              <p>24-pin ATX (system) and 4/8-pin EPS (CPU) deliver regulated power from the PSU.</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <span class="feature-icon">◆</span>
+            <div>
+              <strong>Chipset & BIOS/UEFI</strong>
+              <p>Chipset manages I/O; BIOS/UEFI firmware initializes hardware before the operating system loads.</p>
+            </div>
+          </div>
+        </div>
+
+        <details class="expandable">
+          <summary>What should an L1 technician verify?</summary>
+          <div class="expandable-content">
+            <ul>
+              <li>Confirm the 24-pin ATX and CPU EPS cables are fully seated.</li>
+              <li>Check that RAM modules are locked into DIMM slots.</li>
+              <li>Verify the CMOS battery (CR2032) is present and holding BIOS settings.</li>
+              <li>Inspect for visible damage: bulging capacitors, discoloration, or debris.</li>
+              <li>Ensure standoffs are properly installed and the board is not shorting against the case.</li>
+              <li>Observe POST behavior and record any beep codes or diagnostic LEDs.</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 03 — COMPONENTS GRID -->
+<section id="components" class="section section-alt">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-number">// 03</span>
+      <h2 class="section-title">Hardware Components</h2>
+      <p class="section-subtitle">Core parts every IT technician must know</p>
+    </div>
+
+    <div class="components-grid">
+
+      <!-- CPU -->
+      <article class="component-card reveal">
+        <div class="card-image"><img src="assets/cpu.svg" alt="CPU"></div>
+        <div class="card-body">
+          <span class="card-tag">Processor</span>
+          <h3>Central Processing Unit</h3>
+          <p>The system's primary processor. Executes instructions and manages data flow across all hardware.</p>
+          <ul class="card-specs">
+            <li><span>Cores / Threads</span><strong>Physical / Logical</strong></li>
+            <li><span>Clock Speed</span><strong>GHz</strong></li>
+            <li><span>Cache</span><strong>L1 / L2 / L3</strong></li>
+            <li><span>Socket</span><strong>LGA / AM</strong></li>
+          </ul>
+          <details class="expandable">
+            <summary>Technical details & troubleshooting</summary>
+            <div class="expandable-content">
+              <p><strong>Common symptoms:</strong> Random shutdowns under load, thermal throttling, 100% CPU usage freezes, failure to POST.</p>
+              <p><strong>First-line checks:</strong></p>
+              <ul>
+                <li>Verify cooler is mounted and fan is spinning.</li>
+                <li>Monitor temperatures with HWMonitor or similar tools.</li>
+                <li>Review Task Manager / Process Explorer for runaway processes.</li>
+                <li>Inspect CPU socket for bent pins when a board is accessible.</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+      </article>
+
+      <!-- RAM -->
+      <article class="component-card reveal">
+        <div class="card-image"><img src="assets/ram.svg" alt="RAM"></div>
+        <div class="card-body">
+          <span class="card-tag">Memory</span>
+          <h3>Random Access Memory</h3>
+          <p>Volatile high-speed memory holding active data for the CPU. All contents are cleared on power loss.</p>
+          <ul class="card-specs">
+            <li><span>Generations</span><strong>DDR3 / DDR4 / DDR5</strong></li>
+            <li><span>Form Factors</span><strong>DIMM / SO-DIMM</strong></li>
+            <li><span>Speed</span><strong>MHz (MT/s)</strong></li>
+            <li><span>Capacity</span><strong>GB per module</strong></li>
+          </ul>
+          <details class="expandable">
+            <summary>Technical details & troubleshooting</summary>
+            <div class="expandable-content">
+              <p><strong>Common symptoms:</strong> Blue screens, random freezes, boot failure with no video, continuous beep codes.</p>
+              <p><strong>First-line checks:</strong></p>
+              <ul>
+                <li>Reseat each module firmly until the retention clips click.</li>
+                <li>Boot with a single stick to isolate a failing module.</li>
+                <li>Run Windows Memory Diagnostic (<code>mdsched.exe</code>) or MemTest86.</li>
+                <li>Confirm modules match the motherboard's supported specification.</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+      </article>
+
+      <!-- Storage -->
+      <article class="component-card reveal">
+        <div class="card-image"><img src="assets/storage.svg" alt="Storage"></div>
+        <div class="card-body">
+          <span class="card-tag">Storage</span>
+          <h3>HDD · SATA SSD · NVMe</h3>
+          <p>Non-volatile storage retaining the operating system, applications, and user data between sessions.</p>
+          <ul class="card-specs">
+            <li><span>HDD</span><strong>~80–160 MB/s</strong></li>
+            <li><span>SATA SSD</span><strong>~500–550 MB/s</strong></li>
+            <li><span>NVMe</span><strong>3,500+ MB/s</strong></li>
+            <li><span>Health</span><strong>S.M.A.R.T. metrics</strong></li>
+          </ul>
+          <details class="expandable">
+            <summary>Technical details & troubleshooting</summary>
+            <div class="expandable-content">
+              <p><strong>Common symptoms:</strong> Boot failures, "Operating System Not Found", slow performance, clicking sounds, file corruption.</p>
+              <p><strong>First-line checks:</strong></p>
+              <ul>
+                <li>Confirm the drive appears in BIOS/UEFI before troubleshooting the OS.</li>
+                <li>Review S.M.A.R.T. health in CrystalDiskInfo or vendor tools.</li>
+                <li>Verify SATA / M.2 connections and swap suspect SATA cables.</li>
+                <li>Back up data immediately if degradation is suspected.</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+      </article>
+
+      <!-- GPU -->
+      <article class="component-card reveal">
+        <div class="card-image"><img src="assets/gpu.svg" alt="GPU"></div>
+        <div class="card-body">
+          <span class="card-tag">Graphics</span>
+          <h3>Graphics Processing Unit</h3>
+          <p>Dedicated processor for rendering display output and accelerating parallel workloads.</p>
+          <ul class="card-specs">
+            <li><span>VRAM</span><strong>Dedicated memory</strong></li>
+            <li><span>Interface</span><strong>PCIe x16</strong></li>
+            <li><span>Outputs</span><strong>HDMI / DP / DVI</strong></li>
+            <li><span>Power</span><strong>6/8-pin PCIe</strong></li>
+          </ul>
+          <details class="expandable">
+            <summary>Technical details & troubleshooting</summary>
+            <div class="expandable-content">
+              <p><strong>Common symptoms:</strong> No display, visual artifacts, driver crashes, fan not spinning, system boots without video.</p>
+              <p><strong>First-line checks:</strong></p>
+              <ul>
+                <li>Reseat the card in its PCIe slot.</li>
+                <li>Confirm supplementary PCIe power connectors are attached.</li>
+                <li>Test with integrated graphics (if available) to isolate the GPU.</li>
+                <li>Reinstall drivers using a clean uninstall tool when appropriate.</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+      </article>
+
+      <!-- PSU -->
+      <article class="component-card reveal">
+        <div class="card-image"><img src="assets/psu.svg" alt="PSU"></div>
+        <div class="card-body">
+          <span class="card-tag">Power</span>
+          <h3>Power Supply Unit</h3>
+          <p>Converts AC mains power into regulated DC voltages required by every internal component.</p>
+          <ul class="card-specs">
+            <li><span>Wattage</span><strong>Total output (W)</strong></li>
+            <li><span>Efficiency</span><strong>80 PLUS Rating</strong></li>
+            <li><span>Modularity</span><strong>Full / Semi / None</strong></li>
+            <li><span>Main Connectors</span><strong>24-pin + EPS + PCIe</strong></li>
+          </ul>
+          <details class="expandable">
+            <summary>Technical details & troubleshooting</summary>
+            <div class="expandable-content">
+              <p><strong>Common symptoms:</strong> No power, random shutdowns, burning smell, coil whine, inability to drive high-load components.</p>
+              <p><strong>First-line checks:</strong></p>
+              <ul>
+                <li>Verify the wall outlet and the power cable with a known-good replacement.</li>
+                <li>Confirm the PSU rear switch is in the ON position.</li>
+                <li>Check that 24-pin and EPS connectors are fully seated.</li>
+                <li>Use a PSU tester or perform a controlled paperclip test when safe to do so.</li>
+              </ul>
+              <p class="note">⚠ Never open a PSU enclosure. Internal capacitors can retain lethal voltages.</p>
+            </div>
+          </details>
+        </div>
+      </article>
+
+      <!-- Cooling -->
+      <article class="component-card reveal">
+        <div class="card-image"><img src="assets/cooling.svg" alt="Cooling"></div>
+        <div class="card-body">
+          <span class="card-tag">Thermal</span>
+          <h3>Cooling System</h3>
+          <p>Fans, heatsinks, and airflow management that keep component temperatures within safe operating limits.</p>
+          <ul class="card-specs">
+            <li><span>CPU Cooler</span><strong>Air / AIO Liquid</strong></li>
+            <li><span>Case Fans</span><strong>Intake / Exhaust</strong></li>
+            <li><span>Interface</span><strong>Thermal Paste / Pads</strong></li>
+            <li><span>Monitoring</span><strong>Sensors / PWM</strong></li>
+          </ul>
+          <details class="expandable">
+            <summary>Technical details & troubleshooting</summary>
+            <div class="expandable-content">
+              <p><strong>Common symptoms:</strong> Thermal shutdowns, throttling, loud fan noise, dust buildup, hot chassis.</p>
+              <p><strong>First-line checks:</strong></p>
+              <ul>
+                <li>Clean dust from heatsinks, fans, and intake filters.</li>
+                <li>Verify all fans spin at startup and respond to load.</li>
+                <li>Reapply thermal paste if the CPU runs hot after cleaning.</li>
+                <li>Confirm case airflow follows a sensible intake/exhaust pattern.</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 04 — TROUBLESHOOTING -->
+<section id="troubleshooting" class="section">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-number">// 04</span>
+      <h2 class="section-title">Hardware Troubleshooting</h2>
+      <p class="section-subtitle">Structured, evidence-based L1 diagnostic matrix</p>
+    </div>
+
+    <div class="table-wrapper reveal">
+      <table class="trouble-table">
+        <thead>
+          <tr>
+            <th>Reported Symptom</th>
+            <th>Possible Hardware Area</th>
+            <th>First-Line Checks</th>
+            <th>Escalation Condition</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Computer does not power on</td>
+            <td>PSU, power cable, wall outlet, motherboard</td>
+            <td>Test outlet and cable; verify PSU switch; look for standby LEDs on the board.</td>
+            <td>No response after confirmed power and reseating.</td>
+          </tr>
+          <tr>
+            <td>System powers on but no display</td>
+            <td>RAM, GPU, monitor, display cable</td>
+            <td>Reseat RAM and GPU; test with another cable or monitor; try integrated graphics.</td>
+            <td>No video output after component isolation.</td>
+          </tr>
+          <tr>
+            <td>Noticeably slow performance</td>
+            <td>Storage drive, RAM, thermal throttling</td>
+            <td>Check Task Manager usage; review S.M.A.R.T. health; monitor temperatures.</td>
+            <td>Metrics suggest failing drive or sustained thermal limits.</td>
+          </tr>
+          <tr>
+            <td>Random restarts or shutdowns</td>
+            <td>PSU, CPU cooling, RAM, power settings</td>
+            <td>Review Event Viewer; monitor temperatures; test with a known-good PSU if available.</td>
+            <td>Repeated restarts under verified load with no software cause.</td>
+          </tr>
+          <tr>
+            <td>Storage drive not detected</td>
+            <td>SATA/M.2 connection, cable, drive, BIOS</td>
+            <td>Verify BIOS detection; reseat cables; test drive in another known-good system.</td>
+            <td>Drive missing from BIOS across multiple ports/systems.</td>
+          </tr>
+          <tr>
+            <td>Memory errors or BSOD referencing memory</td>
+            <td>RAM modules, DIMM slot, motherboard</td>
+            <td>Run memory diagnostic; test one stick at a time; swap into alternate slots.</td>
+            <td>Confirmed errors on multiple modules or slots.</td>
+          </tr>
+          <tr>
+            <td>Overheating / thermal shutdowns</td>
+            <td>CPU cooler, fans, thermal paste, dust</td>
+            <td>Clean dust; verify fan operation; monitor live temperatures under load.</td>
+            <td>Temperatures remain unsafe after cleaning and reseating cooler.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="workflow reveal">
+      <h3>Standard Troubleshooting Workflow</h3>
+      <div class="workflow-steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <h4>Gather Information</h4>
+          <p>Collect user impact, timeline, recent changes, and specific error messages before touching hardware.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <h4>Observe Symptoms</h4>
+          <p>Reproduce the issue when possible. Record indicator LEDs, beep codes, sounds, and on-screen output.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <h4>Verify with Evidence</h4>
+          <p>Use diagnostic tools, event logs, and known-good components to confirm the suspected cause.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <h4>Document & Escalate</h4>
+          <p>Record findings, resolution steps, and escalate with structured notes when outside L1 scope.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 05 — COMMANDS -->
+<section id="commands" class="section section-alt">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-number">// 05</span>
+      <h2 class="section-title">Windows Diagnostic Commands</h2>
+      <p class="section-subtitle">Essential built-in utilities for hardware investigation</p>
+    </div>
+
+    <div class="command-grid">
+      <div class="command-card reveal">
+        <div class="command-header">
+          <code class="command-text">msinfo32</code>
+          <button class="copy-btn" data-copy="msinfo32">Copy</button>
+        </div>
+        <h4>System Information</h4>
+        <p>Opens a complete system summary — manufacturer, BIOS version, installed RAM, processor details, and OS data. Use this first to confirm what you're working with.</p>
+      </div>
+
+      <div class="command-card reveal">
+        <div class="command-header">
+          <code class="command-text">dxdiag</code>
+          <button class="copy-btn" data-copy="dxdiag">Copy</button>
+        </div>
+        <h4>DirectX Diagnostic</h4>
+        <p>Reports GPU model, driver version, display output, and sound device status. Useful for display or graphics-related complaints.</p>
+      </div>
+
+      <div class="command-card reveal">
+        <div class="command-header">
+          <code class="command-text">devmgmt.msc</code>
+          <button class="copy-btn" data-copy="devmgmt.msc">Copy</button>
+        </div>
+        <h4>Device Manager</h4>
+        <p>Central console for all installed devices. Yellow warning icons indicate driver or hardware recognition problems.</p>
+      </div>
+
+      <div class="command-card reveal">
+        <div class="command-header">
+          <code class="command-text">diskmgmt.msc</code>
+          <button class="copy-btn" data-copy="diskmgmt.msc">Copy</button>
+        </div>
+        <h4>Disk Management</h4>
+        <p>Shows every detected storage device, partition layout, and drive status. Use it to confirm a drive is recognized by the OS.</p>
+      </div>
+
+      <div class="command-card reveal">
+        <div class="command-header">
+          <code class="command-text">resmon</code>
+          <button class="copy-btn" data-copy="resmon">Copy</button>
+        </div>
+        <h4>Resource Monitor</h4>
+        <p>Live, detailed view of CPU, memory, disk, and network activity per process. Use it to identify what is consuming system resources.</p>
+      </div>
+
+      <div class="command-card reveal">
+        <div class="command-header">
+          <code class="command-text">sfc /scannow</code>
+          <button class="copy-btn" data-copy="sfc /scannow">Copy</button>
+        </div>
+        <h4>System File Checker</h4>
+        <p>Scans and repairs corrupted Windows system files. Run from an elevated command prompt when the OS behaves unpredictably.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 06 — CHECKLIST -->
+<section id="checklist" class="section">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-number">// 06</span>
+      <h2 class="section-title">IT Support Field Checklist</h2>
+      <p class="section-subtitle">Structured items to verify before closing or escalating a ticket</p>
+    </div>
+
+    <div class="checklist-wrapper reveal">
+      <ul class="checklist">
+        <li>
+          <label>
+            <input type="checkbox">
+            <span class="check-box"></span>
+            <div>
+              <strong>User impact and symptoms recorded</strong>
+              <p>Who is affected, when it started, and what the user observes.</p>
+            </div>
+          </label>
+        </li>
+        <li>
+          <label>
+            <input type="checkbox">
+            <span class="check-box"></span>
+            <div>
+              <strong>Device model and asset information recorded</strong>
+              <p>Manufacturer, model number, asset tag, and relevant warranty status.</p>
+            </div>
+          </label>
+        </li>
+        <li>
+          <label>
+            <input type="checkbox">
+            <span class="check-box"></span>
+            <div>
+              <strong>External power and peripheral connections checked</strong>
+              <p>Power cable, outlet, display cable, keyboard, mouse, and docking station.</p>
+            </div>
+          </label>
+        </li>
+        <li>
+          <label>
+            <input type="checkbox">
+            <span class="check-box"></span>
+            <div>
+              <strong>Relevant diagnostics and error messages recorded</strong>
+              <p>Exact text, error codes, event logs, beep codes, and timestamps.</p>
+            </div>
+          </label>
+        </li>
+        <li>
+          <label>
+            <input type="checkbox">
+            <span class="check-box"></span>
+            <div>
+              <strong>Data protection considered before storage operations</strong>
+              <p>Backups verified before any action that could risk user data.</p>
+            </div>
+          </label>
+        </li>
+        <li>
+          <label>
+            <input type="checkbox">
+            <span class="check-box"></span>
+            <div>
+              <strong>Resolution or escalation reason documented</strong>
+              <p>Clear notes on what was done and the exact reason for escalation when applicable.</p>
+            </div>
+          </label>
+        </li>
+      </ul>
+
+      <div class="field-note">
+        <strong>⚑ Field Note:</strong>
+        Always troubleshoot with evidence. A symptom is a clue, not a diagnosis.
+        Verify suspected causes using diagnostic tools and known-good components
+        before replacing hardware or closing a ticket.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <p>Hardware Fundamentals · IT Support Knowledge Base</p>
+    <p class="footer-sub">Compiled from hands-on lab testing and IT support best practices.</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
 
