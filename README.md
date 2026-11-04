@@ -12,8 +12,6 @@ This repository covers the practical skills used in entry-level IT Support, Help
 |---|---|---|---|
 | 01 | Hardware Fundamentals | [Open Web App](https://ahmedaryan-sec.github.io/IT-Support-Portfolio/01-Hardware/website/) | [View Folder](01-Hardware/) |
 
-> **Note:** Replace `YOUR-GITHUB-USERNAME` in the link with your GitHub username.
-
 ---
 
 ## Repository Structure
