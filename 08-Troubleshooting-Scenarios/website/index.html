@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PC &amp; Laptop Troubleshooting Field Guide</title>
+  <meta name="description" content="Interactive field guide to diagnosing PC and laptop problems: no power, no display, boot errors, BIOS, RAM, GPU, overheating and power supply faults, with illustrated step-by-step checklists.">
+  <meta name="theme-color" content="#070405">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Shared SVG definitions used by every illustration (gradients, patterns, filters) -->
+  <svg class="defs-svg" width="0" height="0" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="bgArt" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#16070c"/>
+        <stop offset="1" stop-color="#07030a"/>
+      </linearGradient>
+      <pattern id="gridArt" width="20" height="20" patternUnits="userSpaceOnUse">
+        <path d="M20 0H0V20" fill="none" stroke="#ff2d55" stroke-opacity="0.07" stroke-width="1"/>
+      </pattern>
+      <linearGradient id="caseG" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#2a1a20"/>
+        <stop offset="1" stop-color="#120a0d"/>
+      </linearGradient>
+      <linearGradient id="glare" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#ffffff" stop-opacity="0.10"/>
+        <stop offset="0.45" stop-color="#ffffff" stop-opacity="0"/>
+      </linearGradient>
+      <radialGradient id="metalG" cx="0.35" cy="0.3" r="0.9">
+        <stop offset="0" stop-color="#f1f1f4"/>
+        <stop offset="0.6" stop-color="#a7a8b0"/>
+        <stop offset="1" stop-color="#5d5e66"/>
+      </radialGradient>
+      <linearGradient id="pcbG" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#2a0f18"/>
+        <stop offset="1" stop-color="#14070b"/>
+      </linearGradient>
+      <linearGradient id="goldG" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#f6d98a"/>
+        <stop offset="1" stop-color="#b38a2e"/>
+      </linearGradient>
+      <pattern id="hazard" width="24" height="24" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+        <rect width="12" height="24" fill="#ff2d55"/>
+        <rect x="12" width="12" height="24" fill="#12060a"/>
+      </pattern>
+      <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="4" result="b"/>
+        <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+      <filter id="blur6" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="6"/>
+      </filter>
+    </defs>
+  </svg>
+
+  <a class="skip-link" href="#main">Skip to troubleshooting topics</a>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="#top" aria-label="PC Troubleshooting Field Guide home">
+        <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="2" y="2" width="36" height="36" rx="9" fill="#2a0a14" stroke="#ff2d55" stroke-width="2"/>
+          <rect x="9" y="10" width="22" height="15" rx="2" fill="none" stroke="#ff6b9d" stroke-width="2"/>
+          <path d="M14 30h12M20 25v5" stroke="#ff6b9d" stroke-width="2" stroke-linecap="round"/>
+          <path d="M12 18h4l2-4 3 8 2-4h5" fill="none" stroke="#ff2d55" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div><span>PC Field Guide</span><small>Troubleshooting</small></div>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mainNav" aria-label="Toggle navigation menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <nav class="main-nav" id="mainNav" aria-label="Sections">
+        <a href="#common" data-sec="common">Common</a>
+        <a href="#hardware" data-sec="hardware">Hardware</a>
+        <a href="#boot" data-sec="boot">Boot &amp; BIOS</a>
+        <a href="#display" data-sec="display">Display &amp; POST</a>
+        <a href="#psu" data-sec="psu">Power Supply</a>
+        <a href="#audit" data-sec="audit">Topic Index</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" id="top">
+    <div class="wrap">
+      <span class="eyebrow"><i></i> Field guide for everyone</span>
+      <h1>What is wrong with my computer? <em>Find out safely.</em></h1>
+      <p class="lead">Recognise the symptom, understand the likely cause, and follow clear, safe steps. Written in plain English for everyday users, students, enthusiasts and IT technicians. 18 illustrated troubleshooting topics for desktops and laptops.</p>
+
+      <div class="stats" aria-label="Guide statistics">
+        <div class="stat"><b id="statTopics">18</b><span>Topics</span></div>
+        <div class="stat"><b id="statSteps">0</b><span>Checklist steps</span></div>
+        <div class="stat"><b>5</b><span>Sections</span></div>
+        <div class="stat"><b id="statDone">0</b><span>Steps you've done</span></div>
+      </div>
+    </div>
+  </section>
+
+  <main id="main" class="wrap">
+
+    <div class="notice" role="note">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3L2 21h20L12 3z"/><path d="M12 10v5M12 18.2v.1"/></svg>
+      <div>
+        <h2>Safety first</h2>
+        <p>Always shut down and unplug a desktop before touching anything inside. Never open a power supply. Laptops often contain sealed batteries and fragile parts, so ask a professional if a step needs disassembly. Back up your data before any storage or operating-system recovery step. If something smells burnt, smokes or sparks, stop and get help.</p>
+      </div>
+    </div>
+
+    <div class="legend" aria-label="Difficulty levels">
+      <strong style="color:#fff">Difficulty:</strong>
+      <span><span class="badge lvl-beginner">Beginner</span>anyone can do it</span>
+      <span><span class="badge lvl-intermediate">Intermediate</span>comfortable with basics</span>
+      <span><span class="badge lvl-advanced">Advanced</span>needs experience</span>
+      <span><span class="badge lvl-tech">Technician Only</span>do not attempt</span>
+    </div>
+
+    <!-- Search placed directly above Common Problems -->
+    <div class="search-section">
+      <form class="search-box" role="search" id="searchForm" onsubmit="return false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+          <label for="searchInput" class="sr-only" style="position:absolute;left:-9999px">Search troubleshooting problems</label>
+          <input id="searchInput" type="search" autocomplete="off" spellcheck="false" placeholder="Describe the problem or paste the error message...  e.g. “no signal”, “PC won't turn on”">
+          <button type="button" class="search-clear" id="searchClear" aria-label="Clear search">&times;</button>
+      </form>
+      <div class="chip-row" id="chipRow" aria-label="Example searches">
+        <span class="label">Try:</span>
+        <button class="chip" type="button" data-q="No signal">No signal</button>
+        <button class="chip" type="button" data-q="PC won't turn on">PC won't turn on</button>
+        <button class="chip" type="button" data-q="No bootable device">No bootable device</button>
+        <button class="chip" type="button" data-q="Start PXE over IPv4">Start PXE over IPv4</button>
+        <button class="chip" type="button" data-q="Computer keeps restarting">Computer keeps restarting</button>
+        <button class="chip" type="button" data-q="RAM problem">RAM problem</button>
+        <button class="chip" type="button" data-q="PC shuts down automatically">PC shuts down automatically</button>
+        <button class="chip" type="button" data-q="CMOS battery">CMOS battery</button>
+        <button class="chip" type="button" data-q="PSU testing">PSU testing</button>
+      </div>
+    </div>
+
+    <div class="toolbar">
+      <div class="filters" role="group" aria-label="Filter by category" id="filters"></div>
+      <div class="result-info" id="resultInfo" role="status" aria-live="polite"></div>
+    </div>
+    
+    <section class="topic-section" id="common" data-cat="common" aria-labelledby="h-common">
+      <div class="sec-head">
+        <div>
+          <div class="sec-tag">Section A</div>
+          <h2 id="h-common">Common Problems</h2>
+          <p>The everyday faults behind most "my PC is dead" and "my screen is black" calls. Start here: they are the quickest to check.</p>
+        </div>
+        <span class="sec-count" data-count="common"></span>
+      </div>
+      <div class="grid" id="grid-common"></div>
+    </section>
+
+    <section class="topic-section" id="hardware" data-cat="hardware" aria-labelledby="h-hardware">
+      <div class="sec-head">
+        <div>
+          <div class="sec-tag">Section B</div>
+          <h2 id="h-hardware">Critical Hardware Problems</h2>
+          <p>Faulty or overheating components: memory, processor, motherboard and graphics. These can cause crashes, restarts and data loss.</p>
+        </div>
+        <span class="sec-count" data-count="hardware"></span>
+      </div>
+      <div class="grid" id="grid-hardware"></div>
+    </section>
+
+    <section class="topic-section" id="boot" data-cat="boot" aria-labelledby="h-boot">
+      <div class="sec-head">
+        <div>
+          <div class="sec-tag">Section C</div>
+          <h2 id="h-boot">Boot and BIOS Problems</h2>
+          <p>The computer powers on but cannot find or start Windows: missing boot drives, network-boot messages, boot-mode mismatches and BIOS/CMOS trouble.</p>
+        </div>
+        <span class="sec-count" data-count="boot"></span>
+      </div>
+      <div class="grid" id="grid-boot"></div>
+    </section>
+
+    <section class="topic-section" id="display" data-cat="display" aria-labelledby="h-display">
+      <div class="sec-head">
+        <div>
+          <div class="sec-tag">Section D</div>
+          <h2 id="h-display">Display and POST Problems</h2>
+          <p>POST (Power-On Self-Test) is the quick health check a PC runs before Windows. These topics cover beeps, blinking lights and screens that never wake up.</p>
+        </div>
+        <span class="sec-count" data-count="display"></span>
+      </div>
+      <div class="grid" id="grid-display"></div>
+    </section>
+
+    <section class="topic-section" id="psu" data-cat="psu" aria-labelledby="h-psu">
+      <div class="sec-head">
+        <div>
+          <div class="sec-tag">Section E</div>
+          <h2 id="h-psu">Power Supply Troubleshooting</h2>
+          <p>The power supply unit (PSU) feeds every part of a desktop. Learn the safe checks, and why advanced electrical testing is for technicians only.</p>
+        </div>
+        <span class="sec-count" data-count="psu"></span>
+      </div>
+      <div class="grid" id="grid-psu"></div>
+    </section>
+
+    <div class="no-results" id="noResults" hidden>
+      <svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="20" y="8" width="80" height="52" rx="6" fill="#14070a" stroke="#ff2d55" stroke-width="2"/>
+        <rect x="26" y="14" width="68" height="40" rx="2" fill="#000"/>
+        <text x="60" y="38" text-anchor="middle" font-size="9" fill="#ff6b9d" font-family="monospace">NO MATCH</text>
+        <path d="M48 60h24l4 12H44z" fill="#2a0a14"/>
+      </svg>
+      <h3>No matching topics</h3>
+      <p>Try different words: describe what you see or hear (for example “black screen”, “beeping”, “restarts”), or paste the exact error text.</p>
+      <button class="link-btn" type="button" id="resetSearch">Show all topics</button>
+    </div>
+
+    <section class="audit" id="audit" aria-labelledby="h-audit">
+      <h2 id="h-audit">Topic Index &amp; Completeness Checklist</h2>
+      <p>All 18 required troubleshooting topics are present. Select any entry to open its full solution panel.</p>
+      <ol>
+        <li><button type="button" data-open="power-cable">Power Cable Issue</button></li>
+        <li><button type="button" data-open="no-bootable">No Bootable Media / No Bootable Device</button></li>
+        <li><button type="button" data-open="pxe-dhcp">DHCP / Network Boot (PXE) Error</button></li>
+        <li><button type="button" data-open="uefi-legacy">UEFI vs Legacy Boot Mismatch</button></li>
+        <li><button type="button" data-open="no-power">No Power at All</button></li>
+        <li><button type="button" data-open="boot-loop">Constant Restarting Loop / Stuck on Logo</button></li>
+        <li><button type="button" data-open="beep-codes">Beep Sounds with No Display</button></li>
+        <li><button type="button" data-open="blinking-light">Power Light Blinking but No Display</button></li>
+        <li><button type="button" data-open="running-no-beeps">System Running, No Display and No Beeps</button></li>
+        <li><button type="button" data-open="fans-no-display">Fans Spin, No Display</button></li>
+        <li><button type="button" data-open="ram-seated">RAM Not Seated Properly</button></li>
+        <li><button type="button" data-open="psu-failure">PSU Not Working</button></li>
+        <li><button type="button" data-open="paperclip-test">Advanced PSU Testing: Paperclip Test</button></li>
+        <li><button type="button" data-open="cpu-overheat">CPU Overheating Shutdown</button></li>
+        <li><button type="button" data-open="faulty-ram">Faulty RAM</button></li>
+        <li><button type="button" data-open="mb-short">Motherboard Short Circuit</button></li>
+        <li><button type="button" data-open="bios-cmos">BIOS / CMOS Problems and Reset</button></li>
+        <li><button type="button" data-open="gpu-failure">Graphics Card Failure</button></li>
+      </ol>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap foot-grid">
+      <div>
+        <h2>About this guide</h2>
+        <p>This guide gives general, safety-focused information. Hardware varies by manufacturer, so always consult your motherboard, laptop or PSU manual for model-specific details.</p>
+        <p>Your checklist progress is saved in your browser on this device only. Nothing is uploaded anywhere.</p>
+      </div>
+      <div>
+        <h2>Keyboard shortcuts</h2>
+        <p><kbd>/</kbd> focus search &nbsp; <kbd>Enter</kbd> open a card &nbsp; <kbd>Esc</kbd> close a panel &nbsp; <kbd>Tab</kbd> move between items</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Solution modal -->
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal-panel" id="modalPanel" role="dialog" aria-modal="true" aria-labelledby="modalTitle" tabindex="-1">
+      <div class="modal-head">
+        <div class="titles">
+          <span class="m-code" id="modalCode"></span>
+          <h2 id="modalTitle"></h2>
+        </div>
+        <button class="modal-close" id="modalClose" type="button" aria-label="Close solution panel">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg>
+        </button>
+      </div>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
