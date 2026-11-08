@@ -434,9 +434,9 @@ ART.fansNoDisplay = () => svg("Desktop PC with spinning fans and RGB lighting be
 /* 07 Boot loop */
 ART.bootLoop = () => svg("Monitor showing a manufacturer-style logo and spinner with a circular restart arrow beside it",
   mon(`<polygon points="320,66 348,82 348,114 320,130 292,114 292,82" fill="none" stroke="#ff6b9d" stroke-width="3.5"/><polygon points="320,78 338,88 338,108 320,118 302,108 302,88" fill="#ff2d55" opacity=".25"/>${tx(320, 105, 20, "#fff", "PC", 'text-anchor="middle" font-weight="800"')}${mt(320, 160, 13, "#d0d0d8", "YOUR PC BRAND", 'text-anchor="middle" letter-spacing="3"')}<circle cx="320" cy="200" r="13" fill="none" stroke="#ff6b9d" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="22 60" class="spin"/>${mt(146, 234, 10, "#6a6a72", "Press DEL or F2 for setup")}${mt(498, 234, 10, "#6a6a72", "Restart #4", 'text-anchor="end"')}`, { led: "#34d399" }) +
-  `<g class="spin-slow"><path d="M578 112 A30 30 0 1 1 549 138" fill="none" stroke="#ff2d55" stroke-width="6" stroke-linecap="round"/><path d="M536 126 L551 148 L566 130 Z" fill="#ff2d55"/></g>` +
-  pill(530, 214, "Restarting...", "#ff4d6d", 11) + pill(10, 150, "Stuck on logo", "#ff6b9d", 11));
-
+  `<g class="spin-slow"><circle cx="565" cy="120" r="35" fill="none"/><path d="M 565 96 A 24 24 0 1 1 541 120" fill="none" stroke="#ff2d55" stroke-width="6" stroke-linecap="butt"/><polygon points="541,104 531,122 551,122" fill="#ff2d55"/></g>` +
+  pill(518, 214, "Restarting...", "#ff4d6d", 11) + pill(10, 150, "Stuck on logo", "#ff6b9d", 11));
+  
 /* 08 RAM not seated */
 ART.ramSeated = () => {
   let slots = "";
@@ -548,17 +548,45 @@ ART.psuFail = () => svg("Desktop PC that is powered off with no lights next to a
   pill(24, 34, "PC: completely dead", "#ff6b9d", 11) + pill(290, 260, "No fan - no LED - burning smell", "#ff4d6d", 10) + pill(510, 42, "Dead PSU", "#ff4d6d", 10));
 
 /* Paperclip test (technician only) */
-ART.paperclip = () => svg("Warning illustration: a power supply connector with a crossed-out paperclip, labelled technician only, next to a dedicated PSU tester device showing voltage readings",
-  `<rect width="640" height="30" fill="url(#hazard)" opacity=".85"/><rect x="110" y="4" width="420" height="22" rx="11" fill="#12060a" stroke="#ff2d55"/>` + tx(320, 19, 11.5, "#ffffff", "TECHNICIAN ONLY - NOT RECOMMENDED FOR BEGINNERS", 'text-anchor="middle" font-weight="800" letter-spacing=".5"') +
-  `<rect x="16" y="80" width="170" height="124" rx="8" fill="#17181c" stroke="#5a2431" stroke-width="2"/>${fan(76, 142, 38, false, "#4a4a52")}<rect x="132" y="96" width="40" height="28" rx="3" fill="#0a0a0c" stroke="#777"/>
-   <path d="M186 142 H 262" stroke="#2a2a30" stroke-width="14"/><path d="M186 136 H 262 M186 148 H 262" stroke="#e8c030" stroke-width="2" opacity=".6"/>
-   <rect x="262" y="112" width="104" height="62" rx="5" fill="#d8d4cc" stroke="#9a968e" stroke-width="2"/>${[0, 1].map(r => [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map(i => `<rect x="${268 + i * 8}" y="${120 + r * 26}" width="5" height="12" rx="1" fill="#26262c"/>`).join("")).join("")}
-   <circle cx="436" cy="118" r="36" fill="#12060a" stroke="#ff2d55" stroke-width="5"/><g transform="translate(436 118)"><path d="M-9 14 V-12 A8 8 0 0 1 7 -12 V12 A13 13 0 0 1 -19 12 V-8" fill="none" stroke="#c9c9d0" stroke-width="3.5" stroke-linecap="round"/></g><path d="M411 93 L 461 143" stroke="#ff2d55" stroke-width="5" stroke-linecap="round"/>
-   <rect x="488" y="62" width="142" height="178" rx="10" fill="#1c1c22" stroke="#4a4a58" stroke-width="2"/><rect x="498" y="72" width="122" height="72" rx="4" fill="#06180f" stroke="#1e6a44"/>` +
-  ML(["+3.3V   3.31", "+5V     5.03", "+12V   12.07", "Power Good: OK"], 506, 90, 10.5, "#5cff9c", 15) +
-  `${[0, 1, 2, 3, 4].map(i => `<circle cx="${512 + i * 20}" cy="160" r="5" fill="#34d399"/>`).join("")}<rect x="502" y="182" width="114" height="34" rx="4" fill="#d8d4cc"/>${[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map(i => `<rect x="${507 + i * 10.5}" y="188" width="5" height="10" fill="#26262c"/><rect x="${507 + i * 10.5}" y="202" width="5" height="10" fill="#26262c"/>`).join("")}` +
-  pill(490, 262, "Dedicated PSU tester", "#34d399", 11) + pill(16, 232, "Not for beginners", "#ff4d6d", 11) +
-  tx(250, 284, 12, "#a1969a", "A spinning fan does NOT prove a PSU is healthy.", 'text-anchor="middle"'));
+ART.paperclip = () => {
+  let holes = '';
+  for (let r = 0; r < 2; r++) {
+    for (let c = 0; c < 12; c++) {
+      let isTarget = (r === 0 && (c === 3 || c === 4)); // 4th and 5th pin on top row
+      let hFill = isTarget ? "#000" : "#0a0a0c";
+      if (isTarget) holes += `<rect x="${245 + c * 13}" y="${117 + r * 18}" width="10" height="12" rx="3" fill="#34d399" opacity="0.3"/>`;
+      holes += `<rect x="${246 + c * 13}" y="${118 + r * 18}" width="8" height="10" rx="2" fill="${hFill}" stroke="#111" stroke-width="1"/>`;
+    }
+  }
+  return svg("Illustration showing a power supply connector with a paperclip bridging pins 16 and 17, and a dedicated PSU tester showing voltage readings",
+    `<rect width="640" height="30" fill="url(#hazard)" opacity=".85"/><rect x="110" y="4" width="420" height="22" rx="11" fill="#12060a" stroke="#ff2d55"/>` + tx(320, 19, 11.5, "#ffffff", "TECHNICIAN PROCEDURE - PROCEED WITH CAUTION", 'text-anchor="middle" font-weight="800" letter-spacing=".5"') +
+    `<rect x="16" y="80" width="150" height="124" rx="8" fill="#17181c" stroke="#5a2431" stroke-width="2"/>${fan(66, 142, 38, false, "#4a4a52")}<rect x="112" y="96" width="40" height="28" rx="3" fill="#0a0a0c" stroke="#777"/>
+     <path d="M166 142 C 190 142, 200 133, 240 133" fill="none" stroke="#222" stroke-width="24"/>
+     <!-- Connector -->
+     <rect x="240" y="110" width="166" height="44" rx="4" fill="#2c2c34" stroke="#555" stroke-width="1.5"/>
+     <rect x="294" y="102" width="58" height="10" rx="2" fill="#2c2c34" stroke="#555" stroke-width="1.5"/>
+     <rect x="306" y="98" width="34" height="6" rx="1" fill="#222"/>` +
+     holes + 
+     `<path d="M 289 122 V 176 A 6.5 6.5 0 0 0 302 176 V 122" fill="none" stroke="#a0a0aa" stroke-width="4.5" stroke-linecap="round"/>
+     <path d="M 289 122 V 176 A 6.5 6.5 0 0 0 302 176 V 122" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+     
+     <!-- Arrows and labels -->
+     <path d="M 272 96 L 286 112" fill="none" stroke="#34d399" stroke-width="2" stroke-linecap="round"/>
+     <path d="M 319 96 L 305 112" fill="none" stroke="#34d399" stroke-width="2" stroke-linecap="round"/>` +
+     tx(266, 92, 10.5, "#34d399", "PS_ON", 'text-anchor="end" font-weight="700"') +
+     tx(325, 92, 10.5, "#34d399", "GROUND", 'text-anchor="start" font-weight="700"') +
+     
+     `<!-- Tester -->
+     <rect x="468" y="62" width="156" height="178" rx="10" fill="#1c1c22" stroke="#4a4a58" stroke-width="2"/>
+     <rect x="482" y="76" width="128" height="72" rx="4" fill="#06180f" stroke="#1e6a44"/>` +
+     ML(["+3.3V   3.31", "+5V     5.03", "+12V   12.07", "Power Good: OK"], 492, 94, 10.5, "#5cff9c", 15) +
+     `${[0, 1, 2, 3, 4].map(i => `<circle cx="${498 + i * 24}" cy="164" r="5" fill="#34d399"/>`).join("")}
+     <rect x="482" y="186" width="128" height="34" rx="4" fill="#d8d4cc"/>
+     ${[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(i => `<rect x="${488 + i * 11}" y="192" width="6" height="10" fill="#26262c"/><rect x="${488 + i * 11}" y="206" width="6" height="10" fill="#26262c"/>`).join("")}` +
+     
+     pill(546, 262, "Dedicated PSU tester", "#34d399", 11) + pill(323, 222, "Paperclip (Pins 16 & 17)", "#34d399", 11) +
+     tx(320, 286, 12, "#a1969a", "A spinning fan only proves the PSU can turn on, not that it is healthy.", 'text-anchor="middle"'));
+};
 
 /* 06 Beep codes */
 ART.beep = () => svg("Black monitor and a motherboard with a small buzzer emitting sound waves, plus a short and long beep pattern to count",
@@ -1075,35 +1103,34 @@ PROBLEMS.push({
 PROBLEMS.push({
   id: "paperclip-test", cat: "psu", level: "Technician Only",
   title: "Advanced PSU Testing — Paperclip Test",
-  blurb: "What the paperclip test is, why technicians use it, and why it is not recommended for beginners or a proof of a healthy PSU.",
-  art: "paperclip", caption: "A PSU main connector with a crossed-out paperclip, and a dedicated PSU tester showing voltage readings.",
+  blurb: "How to perform the paperclip test to force a PSU to power on, and why it is not a proof of a fully healthy PSU.",
+  art: "paperclip", caption: "A PSU main connector with a paperclip bridging pins 16 and 17, next to a dedicated PSU tester.",
   scope: "Desktop power supplies",
   kw: ["paperclip test", "psu testing", "test power supply without computer", "jump start psu", "ps_on", "psu bypass", "power supply paper clip", "how to test psu", "psu tester", "psu spins but pc won't turn on", "psu fan spins", "24 pin jumper"],
   err: [],
   see: ["A desktop PC that will not start and you suspect the PSU.", "An online guide telling you to 'jump' a PSU with a paperclip.", "A PSU whose fan spins, but the PC still will not start."],
-  means: "The paperclip test is a quick technician trick to see whether a PSU will switch on without a motherboard. It only answers a narrow question (does it start?). It does not tell you whether the PSU is healthy, and doing it wrongly can cause electrical hazards. For almost everyone, a dedicated PSU tester or a technician is the right choice.",
-  causes: ["Used by technicians to separate 'PSU won't start' from 'motherboard is not telling the PSU to start'.", "Often suggested online without proper warnings.", "Not appropriate when the PSU shows damage, smells burnt or has been wet."],
+  means: "The paperclip test forces a PSU to switch on without a motherboard. By bridging the 'Power On' pin to a 'Ground' pin, you manually simulate the motherboard's start signal. While useful to see if a completely dead PSU can turn on, it does NOT test voltage stability or performance under load. A spinning fan alone does not mean the PSU is healthy.",
+  causes: ["Used by technicians to separate 'PSU won't start' from 'motherboard is not telling the PSU to start'.", "A useful basic check, but often misunderstood as a definitive health test."],
   extra: [
-    { h: "What is the paperclip test?", tech: true, p: ["It is a technician-only method of making a PSU turn on while it is disconnected from the computer's parts. A technician temporarily connects two specific contacts on the PSU's main cable so the PSU believes the motherboard has asked it to start. This guide intentionally gives no beginner step-by-step procedure."] },
-    { h: "What does the PS_ON signal do?", p: ["PS_ON ('power supply on') is a control wire between the motherboard and the PSU. The PSU normally holds this wire at a 'standby' level. When you press the power button, the motherboard pulls the wire to ground and the PSU responds by turning on its main outputs. The paperclip test imitates that signal. Without it, the PSU stays in standby, even when plugged in."] },
-    { h: "Why do technicians sometimes use it?", p: ["To check quickly whether a PSU can start on its own. If the PSU will not start by itself, it is likely faulty. If it does start, the motherboard, the power button or another component may be responsible. It is a diagnostic shortcut for people who understand the risks and who use proper equipment afterwards."] },
-    { h: "A spinning fan does NOT prove a PSU is healthy", p: ["A PSU fan can spin, and the PSU can switch on, while the voltages are wrong, unsteady or collapse under load. A fan spinning only shows that some of the PSU's circuits work. Worn capacitors, unstable voltage lines or a missing 'power good' signal can still stop a PC from running properly."] },
-    { h: "What the test does NOT verify", ul: ["Voltage regulation: whether each output stays within safe limits.", "Ripple and noise on the power lines.", "Performance under load, when the computer is actually drawing power.", "Correct timing of the 'power good' signal that tells the motherboard that power is stable.", "Safety protections working correctly."] },
-    { h: "Why incorrect testing is dangerous", ul: ["A PSU contains mains-voltage circuitry and delivers high current: mistakes can cause sparks, burns, fire or damage to every connected part.", "A metal clip can touch the wrong contact and short a power line.", "Testing a damaged, wet or burnt PSU is hazardous.", "Connecting the PSU to drives or boards while experimenting can destroy them.", "Online instructions often skip safety checks and are not suitable for beginners."] },
-    { h: "Safe alternatives", p: ["Use a dedicated plug-in PSU tester (it costs little and is made for this job) or take the PC to a qualified technician for voltage-rail and load testing. Never open the PSU case."], link: ["psu-failure", "Back to PSU troubleshooting"] }
+    { h: "What is the paperclip test?", tech: true, p: ["It is a diagnostic method to force a power supply to turn on while it is completely disconnected from the computer's components. By bridging two specific pins with a bare metal clip, you manually trigger the start signal."] },
+    { h: "What does the PS_ON signal do?", p: ["PS_ON ('power supply on') is a control wire between the motherboard and the PSU. When you press the case power button, the motherboard pulls this wire to ground. The paperclip physically connects the PS_ON pin to a Ground pin, bypassing the motherboard."] },
+    { h: "A spinning fan does NOT prove a PSU is healthy", p: ["A PSU fan can spin while the voltages are completely wrong, unsteady, or collapse under load. Worn capacitors or unstable voltage lines can still stop a PC from running properly even if it passes this test."] },
+    { h: "Safety Warnings", ul: ["Always use a standard BARE METAL paperclip, free of plastic or rubber coatings.", "The PSU MUST be completely disconnected from ALL computer parts (motherboard, graphics card, drives) before testing to prevent damage.", "Do not touch the metal clip while the PSU is plugged in and switched on."] }
   ],
   steps: [
-    ["Decide honestly whether you are trained", "If you have never worked with PSUs, stop here. Do not attempt this test."],
-    ["Rule out the simple causes first", "Check the outlet, power cable and PSU rear switch (see 'Power Cable Issue')."],
-    ["Use a dedicated PSU tester instead", "Follow the tester's own instructions, with the PSU disconnected from the wall and from all PC parts."],
-    ["Treat a 'pass' as a basic check only", "A pass does not prove the PSU performs correctly under load; if the PC is still unstable, get further testing."],
-    ["Book a technician for voltage and load testing", "A qualified technician can measure voltage rails and test under load with proper equipment.", "Technician Only"],
-    ["Replace the PSU when needed", "If the PSU has failed, replace it with a quality unit of enough wattage and correct connectors.", "Advanced"]
+    ["Disconnect everything (Crucial Step)", "Switch off the PSU at the back and unplug it from the wall. Disconnect ALL power cables from the motherboard, graphics card, drives, and case accessories. The PSU must be completely isolated."],
+    ["Locate the 24-pin connector", "Find the main 24-pin ATX power cable. Hold the connector so that the plastic retention clip/latch is facing UP."],
+    ["Identify Pin 16 and Pin 17", "Looking directly into the connector holes, locate the 4th and 5th pins from the left on the top row (the row with the latch). These are Pin 16 (PS_ON, often a green wire) and Pin 17 (Ground, often a black wire)."],
+    ["Insert the paperclip", "Unfold a bare metal paperclip into a U-shape. Firmly insert one end into Pin 16, and the other end into Pin 17. Make sure it touches the metal contacts inside."],
+    ["Power on and observe", "Without touching the paperclip, plug the PSU into the wall outlet and flip the rear switch to 'I' (On)."],
+    ["Check the fan", "If the PSU fan spins up, it is capable of powering on. If it does not spin at all, the PSU is dead. (Note: Some premium PSUs have a 'Zero RPM' mode and the fan may only spin for a brief second at startup)."],
+    ["Turn off and remove", "Flip the rear switch back to 'O' (Off), unplug the PSU from the wall, wait a few seconds, and remove the paperclip.", "Beginner"],
+    ["Next steps", "If the PSU failed, replace it. If it passed but the PC still crashes or won't start under load, the PSU might still be faulty. A dedicated PSU tester or technician can verify load stability.", "Advanced"]
   ],
-  dont: ["Do not copy step-by-step online guides if you are not trained.", "Do not run the test with the PSU still connected to the motherboard, drives or graphics card.", "Do not open the PSU casing for any reason.", "Do not test a PSU that is damaged, wet, burnt or has swollen parts.", "Do not treat a spinning fan as a pass."],
-  call: ["You suspect the PSU is faulty and you are not trained to test it.", "A PSU tester shows a fail or unusual readings.", "There is a burning smell, smoke or damage.", "The PC shuts down under load and you need voltage-rail testing."],
-  warn: { t: "Never open a PSU", d: ["Never open a PSU casing.", "Internal capacitors can retain dangerous electrical charge even after unplugging.", "Do not touch exposed PSU circuitry.", "Stop using a PSU if there is a burning smell, smoke or visible damage."] },
-  banner: "TECHNICIAN ONLY — NOT RECOMMENDED FOR BEGINNERS",
+  dont: ["Do not run the test with the PSU connected to the motherboard or any other component.", "Do not touch the bare paperclip while the PSU is powered.", "Do not use a coated or painted paperclip.", "Do not open the PSU casing for any reason.", "Do not assume a spinning fan means the PSU is 100% healthy."],
+  call: ["You suspect the PSU is faulty but are uncomfortable performing this test.", "The test passes, but the PC still won't start or randomly shuts down under load.", "There is a burning smell, smoke, or visible damage."],
+  warn: { t: "Electrical Safety", d: ["Never open a PSU casing.", "Ensure the PSU is completely disconnected from PC parts before testing.", "Do not touch the metal paperclip while the PSU is receiving wall power."] },
+  banner: "TECHNICIAN PROCEDURE — PROCEED WITH CAUTION",
   related: ["psu-failure", "no-power", "power-cable"]
 });
 
