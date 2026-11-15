@@ -10,8 +10,8 @@
 | Module | Topic | Live Web App | Source Code |
 |---|---|---|---|
 | **01** | **Hardware Fundamentals** | [🚀 Launch Web App](https://ahmedaryan-sec.github.io/IT-Support-Portfolio/01-Hardware/website/) | [📁 View Folder](01-Hardware/) |
-| **08** | **PC Boot & Startup Troubleshooting** | [⚡ Launch Web App](https://ahmedaryan-sec.github.io/IT-Support-Portfolio/08-Troubleshooting-Scenarios/website/) | [📁 View Folder](08-Troubleshooting-Scenarios/) |
-
+| **02** | **Windows OS & BSOD Diagnostics** | [⚡ Launch Web App](https://ahmedaryan-sec.github.io/IT-Support-Portfolio/02-Operating-Systems/website/) | [📁 View Folder](02-Operating-Systems/) |
+| **08** | **PC Boot & Startup Troubleshooting** | [🛠️ Launch Web App](https://ahmedaryan-sec.github.io/IT-Support-Portfolio/08-Troubleshooting-Scenarios/website/) | [📁 View Folder](08-Troubleshooting-Scenarios/) |
 
 ---
 
@@ -19,14 +19,15 @@
 
 ```text
 IT-Support-Portfolio/
-├── 01-Hardware/                  # Core Architecture, Components & L1 Troubleshooting Matrix
-│   └── website/                  # Live Interactive Hardware Knowledge Base App
-├── 02-Operating-Systems/         # Windows 10/11 & Linux Administration (In Progress)
-├── 03-Networking/                # IP, DNS, DHCP, Subnetting & Troubleshooting (Upcoming)
-├── 04-Ticketing-Systems/         # osTicket / Freshdesk Workflows (Upcoming)
-├── 05-Active-Directory/          # User Management, GPOs & Domain Services (Upcoming)
-├── 06-PowerShell-Scripts/        # Automation Scripts for IT Support (Upcoming)
-├── 07-SOPs/                      # Standard Operating Procedures & Documentation (Upcoming)
-├── 08-Troubleshooting-Scenarios/ # Real-World Ticket Resolution Scenarios
-│   └── website/                  # Live Interactive PC Boot Diagnostic App
-└── 09-Certifications/            # Verified Course & Certification Badges (Upcoming)
+├── 01-Hardware/                 # Core Architecture, Components & L1 Troubleshooting Matrix
+│   └── website/                 # Live Interactive Hardware Knowledge Base App
+├── 02-Operating-Systems/        # Windows 10/11 & Linux Administration
+│   └── website/                 # Live Interactive BSOD & Stop Error Diagnostic App
+├── 03-Networking/               # IP, DNS, DHCP, Subnetting & Troubleshooting (Upcoming)
+├── 04-Ticketing-Systems/        # osTicket / Freshdesk Workflows (Upcoming)
+├── 05-Active-Directory/         # User Management, GPOs & Domain Services (Upcoming)
+├── 06-PowerShell-Scripts/       # Automation Scripts for IT Support (Upcoming)
+├── 07-SOPs/                     # Standard Operating Procedures & Documentation (Upcoming)
+├── 08-Troubleshooting-Scenarios/# Real-World Ticket Resolution Scenarios
+│   └── website/                 # Live Interactive PC Boot Diagnostic App
+└── 09-Certifications/           # Verified Course & Certification Badges (Upcoming)
