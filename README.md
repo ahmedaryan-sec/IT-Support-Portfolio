@@ -1,33 +1,60 @@
-# 🛠️ IT Support Portfolio & Field Reference
+# IT Support Portfolio
 
-> An interactive, field-tested IT Help Desk knowledge base and documentation hub built from scratch.  
-> Designed for entry-level IT Support, L1 Desktop Support, and Help Desk Technicians.
+I'm currently learning IT support and working toward becoming a help desk technician. I started this repository to keep track of what I'm learning, the problems I practice solving, and the commands I might need later.
 
----
+Instead of just writing down notes, I also try to turn what I learn into small interactive websites. It helps me understand things better, and I can come back to them whenever I forget a command or need to troubleshoot something.
 
-## 🌐 Live Interactive Web Apps
+This is still a work in progress. I'll keep adding what I learn along the way.
 
-| Module | Topic | Live Web App | Source Code |
-|---|---|---|---|
-| **01** | **Hardware Fundamentals** | [🚀 Launch Web App](https://ahmedaryan-sec.github.io/IT-Support-Portfolio/01-Hardware/website/) | [📁 View Folder](01-Hardware/) |
-| **02** | **Windows OS & BSOD Diagnostics** | [⚡ Launch Web App](https://ahmedaryan-sec.github.io/IT-Support-Portfolio/02-Operating-Systems/website/) | [📁 View Folder](02-Operating-Systems/) |
-| **08** | **PC Boot & Startup Troubleshooting** | [🛠️ Launch Web App](https://ahmedaryan-sec.github.io/IT-Support-Portfolio/08-Troubleshooting-Scenarios/website/) | [📁 View Folder](08-Troubleshooting-Scenarios/) |
+## Web Apps
 
----
+Some of my notes are available as interactive websites.
 
-## 📂 Repository Structure
+| Topic | Website | Files |
+|---|---|---|
+| Hardware Fundamentals | [Open Website](https://ahmedaryan-sec.github.io/IT-Support-Portfolio/01-Hardware/website/) | [View Files](01-Hardware/) |
+| Windows OS & BSOD Troubleshooting | [Open Website](https://ahmedaryan-sec.github.io/IT-Support-Portfolio/02-Operating-Systems/website/) | [View Files](02-Operating-Systems/) |
+| Networking Fundamentals | [Open Website](https://ahmedaryan-sec.github.io/IT-Support-Portfolio/03-Networking/website/) | [View Files](03-Networking/) |
+| PC Boot & Startup Troubleshooting | [Open Website](https://ahmedaryan-sec.github.io/IT-Support-Portfolio/08-Troubleshooting-Scenarios/website/) | [View Files](08-Troubleshooting-Scenarios/) |
+
+## Repository Structure
 
 ```text
 IT-Support-Portfolio/
-├── 01-Hardware/                 # Core Architecture, Components & L1 Troubleshooting Matrix
-│   └── website/                 # Live Interactive Hardware Knowledge Base App
-├── 02-Operating-Systems/        # Windows 10/11 & Linux Administration
-│   └── website/                 # Live Interactive BSOD & Stop Error Diagnostic App
-├── 03-Networking/               # IP, DNS, DHCP, Subnetting & Troubleshooting (Upcoming)
-├── 04-Ticketing-Systems/        # osTicket / Freshdesk Workflows (Upcoming)
-├── 05-Active-Directory/         # User Management, GPOs & Domain Services (Upcoming)
-├── 06-PowerShell-Scripts/       # Automation Scripts for IT Support (Upcoming)
-├── 07-SOPs/                     # Standard Operating Procedures & Documentation (Upcoming)
-├── 08-Troubleshooting-Scenarios/# Real-World Ticket Resolution Scenarios
-│   └── website/                 # Live Interactive PC Boot Diagnostic App
-└── 09-Certifications/           # Verified Course & Certification Badges (Upcoming)
+│
+├── 01-Hardware/
+│   └── website/
+│
+├── 02-Operating-Systems/
+│   └── website/
+│
+├── 03-Networking/
+│   └── website/
+│
+├── 04-Ticketing-Systems/
+│
+├── 05-Active-Directory/
+│
+├── 06-PowerShell-Scripts/
+│
+├── 07-SOPs/
+│
+├── 08-Troubleshooting-Scenarios/
+│   └── website/
+│
+└── 09-Certifications/
+```
+
+The folders cover different areas of IT support:
+
+- **01-Hardware:** PC components, how they work, and common hardware problems.
+- **02-Operating-Systems:** Windows administration, system errors, and troubleshooting.
+- **03-Networking:** IP addressing, DNS, DHCP, subnetting, and network diagnostics.
+- **04-Ticketing-Systems:** Notes and practice with help desk ticketing tools.
+- **05-Active-Directory:** User accounts, groups, permissions, and domain management.
+- **06-PowerShell-Scripts:** Scripts for basic Windows administration tasks.
+- **07-SOPs:** Step-by-step instructions for common support tasks.
+- **08-Troubleshooting-Scenarios:** Practice cases based on problems a help desk technician might encounter.
+- **09-Certifications:** Courses and certifications I've completed.
+
+Some sections are still being worked on. I'll add more notes and projects as I work through them.
