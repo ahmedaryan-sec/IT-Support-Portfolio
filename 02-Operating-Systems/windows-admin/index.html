@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Windows Admin — IT Support Field Guide</title>
+<meta name="description" content="Windows Admin: boxed step-by-step procedures, a plain-language command search, an interactive IT support ticket note with escalation guidance, and Microsoft references." />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="progress-bar" id="progress" aria-hidden="true"></div>
+
+<!-- ============ NAVBAR ============ -->
+<header class="navbar">
+  <div class="nav-container">
+    <a href="#top" class="nav-logo"><span class="logo-dot" aria-hidden="true"></span>Windows <span class="logo-accent">Admin</span></a>
+    <nav class="nav-links" aria-label="Main">
+      <a class="nav-link" href="#tools">Admin Tools</a>
+      <a class="nav-link" href="#boxes">Procedures</a>
+      <a class="nav-link" href="#ticket">Ticket Note</a>
+      <a class="nav-link" href="#references">References</a>
+    </nav>
+    <button class="icon-btn" id="themeToggle" type="button" aria-label="Toggle colour theme" title="Toggle theme">
+      <span class="theme-icon" aria-hidden="true">◐</span>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <span class="hero-badge"><span class="status-dot" aria-hidden="true"></span>IT Support · L1 Field Guide</span>
+        <h1 class="hero-title">Windows Admin<br /><span class="accent">Field Guide</span></h1>
+        <p class="hero-subtitle">Windows 10/11 · Help Desk / Level 1</p>
+        <p class="hero-description">
+          Boxed procedures you can tick off, a command search that understands plain English,
+          and a ticket note that writes itself — including a straight answer on whether to escalate.
+        </p>
+        <div class="hero-cta">
+          <a href="#tools" class="btn btn-primary">Browse the tools →</a>
+          <a href="#boxes" class="btn btn-secondary">Open the boxes ↓</a>
+        </div>
+        <div class="hero-meta">
+          <div class="meta-item"><span class="meta-label">Knowledge Area</span><span class="meta-value">Windows Client Admin</span></div>
+          <div class="meta-item"><span class="meta-label">Target Level</span><span class="meta-value">Help Desk / L1</span></div>
+          <div class="meta-item"><span class="meta-label">Format</span><span class="meta-value">Clickable Field Guide</span></div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="visual-frame">
+          <div class="terminal" aria-hidden="true">
+            <div class="terminal-bar">
+              <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
+              <span class="terminal-title">Administrator: Command Prompt</span>
+            </div>
+            <div class="terminal-body">
+              <p class="term-line l1"><span class="prompt">C:\&gt;</span> winver</p>
+              <p class="term-line l2"><span class="out">Windows 11 Pro · 23H2 · build 22631</span></p>
+              <p class="term-line l3"><span class="prompt">C:\&gt;</span> net stop spooler</p>
+              <p class="term-line l4"><span class="out">The Print Spooler service was stopped.</span></p>
+              <p class="term-line l5"><span class="prompt">C:\&gt;</span> net start spooler</p>
+              <p class="term-line l6"><span class="out out-ok">The Print Spooler service was started.</span></p>
+              <p class="term-line l7"><span class="prompt">C:\&gt;</span> <span class="caret">█</span></p>
+            </div>
+          </div>
+          <span class="visual-tag tag-1">services.msc</span>
+          <span class="visual-tag tag-2">net user</span>
+          <span class="visual-tag tag-3">chkdsk /scan</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 01 · ADMIN TOOLS BROWSER ============ -->
+  <section class="section" id="tools">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Windows Admin Tools</h2>
+        <p class="section-subtitle">Pick a tool from the list, or search the way the user talks — “printer won't print”, “pc is slow”, “forgot my password”.</p>
+      </div>
+
+      <div class="browser">
+        <aside class="browser-side">
+          <div class="browser-side-head">
+            <div class="browser-search">
+              <span class="browser-search-icon" aria-hidden="true">⌕</span>
+              <input type="search" id="toolSearch" placeholder="Search tools and symptoms" autocomplete="off" spellcheck="false" aria-label="Search tools and symptoms" />
+              <button class="browser-clear" id="searchClear" type="button" aria-label="Clear search" hidden>✕</button>
+            </div>
+            <div class="browser-topic">
+              <label for="topicSelect">Topic</label>
+              <select id="topicSelect">
+                <option value="all">All topics</option>
+              </select>
+            </div>
+          </div>
+          <ul class="browser-list" id="toolList" aria-label="Tools"></ul>
+          <p class="browser-empty" id="listEmpty" hidden>Nothing matches. Try “printer”, “slow”, “password”, “wifi”, “blue screen”.</p>
+        </aside>
+
+        <div class="browser-main" id="toolDetail"></div>
+      </div>
+
+      <div class="callout-inline">
+        Commands that change system settings should only be run on machines you're authorized to support,
+        and inside the company's change-approval process.
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 02 · PROCEDURES (BOXES) ============ -->
+  <section class="section section-alt" id="boxes">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Procedures</h2>
+        <p class="section-subtitle">Open a box and work through its steps — each step ticks off and is remembered. For individual commands, use the tools browser above.</p>
+      </div>
+
+      <div class="box-grid" id="boxGrid">
+
+        <button class="section-box" type="button" data-open="editions">
+          <div class="box-top"><span class="box-num">BOX 01</span><span class="box-count" data-count="editions">— steps</span></div>
+          <span class="box-icon" aria-hidden="true">▣</span>
+          <h3 class="box-title">Check the Windows Edition</h3>
+          <p class="box-desc">Confirm what the device can actually do before chasing a feature that isn't there.</p>
+          <div class="box-foot">
+            <span class="box-track"><span class="box-fill" data-fill="editions"></span></span>
+            <span class="box-progress" data-progress="editions">0/0</span>
+            <span class="box-open">Open →</span>
+          </div>
+        </button>
+
+        <button class="section-box" type="button" data-open="accounts">
+          <div class="box-top"><span class="box-num">BOX 02</span><span class="box-count" data-count="accounts">— steps</span></div>
+          <span class="box-icon" aria-hidden="true">☰</span>
+          <h3 class="box-title">Local Accounts with CMD</h3>
+          <p class="box-desc">List, create, reset, enable, disable, and delete local accounts safely.</p>
+          <div class="box-foot">
+            <span class="box-track"><span class="box-fill" data-fill="accounts"></span></span>
+            <span class="box-progress" data-progress="accounts">0/0</span>
+            <span class="box-open">Open →</span>
+          </div>
+        </button>
+
+        <button class="section-box" type="button" data-open="repair">
+          <div class="box-top"><span class="box-num">BOX 03</span><span class="box-count" data-count="repair">— steps</span></div>
+          <span class="box-icon" aria-hidden="true">✚</span>
+          <h3 class="box-title">Repair &amp; Diagnostics</h3>
+          <p class="box-desc">DISM, SFC, chkdsk, ipconfig and task tools — matched to the symptom you found.</p>
+          <div class="box-foot">
+            <span class="box-track"><span class="box-fill" data-fill="repair"></span></span>
+            <span class="box-progress" data-progress="repair">0/0</span>
+            <span class="box-open">Open →</span>
+          </div>
+        </button>
+
+        <button class="section-box" type="button" data-open="spooler">
+          <div class="box-top"><span class="box-num">BOX 04</span><span class="box-count" data-count="spooler">— steps</span></div>
+          <span class="box-icon" aria-hidden="true">⎙</span>
+          <h3 class="box-title">Print Jobs Stuck in the Queue</h3>
+          <p class="box-desc">Check first, then clear the queue and restart the spooler in four steps.</p>
+          <div class="box-foot">
+            <span class="box-track"><span class="box-fill" data-fill="spooler"></span></span>
+            <span class="box-progress" data-progress="spooler">0/0</span>
+            <span class="box-open">Open →</span>
+          </div>
+        </button>
+
+      </div>
+
+      <p class="grid-hint">Tip: press <kbd>Esc</kbd> to close a box. Progress is saved in this browser only.</p>
+    </div>
+  </section>
+
+  <!-- ============ 03 · TICKET NOTE ============ -->
+  <section class="section" id="ticket">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Writing the Ticket Note</h2>
+        <p class="section-subtitle">Issue → Impact → Checked → Action → Result → Status. Fill it in, and the note writes itself.</p>
+      </div>
+
+      <div class="ticket-grid">
+
+        <!-- builder -->
+        <div class="ticket-builder">
+          <h3 class="panel-title">Ticket details</h3>
+
+          <div class="field">
+            <label for="fIssue">Issue — what did the user report?</label>
+            <input id="fIssue" type="text" value="Print job stuck in the queue and nothing prints." />
+          </div>
+
+          <div class="field">
+            <label for="fImpact">Impact — who is affected?</label>
+            <select id="fImpact">
+              <option>One user blocked from working</option>
+              <option>One user inconvenienced, can still work</option>
+              <option>Multiple users affected</option>
+              <option>Business-critical system or service down</option>
+              <option>Unknown / not yet confirmed</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="fChecked">Checked — what did you rule out?</label>
+            <textarea id="fChecked" rows="2">Printer online and reachable; correct printer selected; cancel from the queue failed.</textarea>
+          </div>
+
+          <div class="field">
+            <label for="fAction">Action — what did you actually do?</label>
+            <textarea id="fAction" rows="3">Stopped Print Spooler, cleared the local queue with user approval, started the service again.</textarea>
+          </div>
+
+          <div class="field">
+            <label for="fResult">Result — what happened afterwards?</label>
+            <textarea id="fResult" rows="2">Test page printed successfully; user re-sent the original document and it printed.</textarea>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="fStatus">Status</label>
+              <select id="fStatus">
+                <option>Resolved</option>
+                <option>Monitoring</option>
+                <option>Awaiting user response</option>
+                <option>Escalated</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="fNext">Next step (optional)</label>
+              <input id="fNext" type="text" value="No further action needed." />
+            </div>
+          </div>
+
+          <div class="builder-actions">
+            <button class="btn btn-primary" type="button" id="copyNote">Copy note</button>
+            <button class="btn btn-ghost" type="button" id="clearNote">Clear fields</button>
+          </div>
+        </div>
+
+        <!-- live preview -->
+        <div class="ticket-preview">
+          <div class="preview-head">
+            <span class="preview-label">Live ticket note</span>
+            <span class="status-pill" id="noteStatus">Resolved</span>
+          </div>
+          <pre class="ticket-pre" id="notePreview"></pre>
+          <p class="preview-foot">Updates as you type. Escalating below adds an escalation block to this note.</p>
+        </div>
+      </div>
+
+      <!-- escalation -->
+      <div class="escalation-grid">
+        <div class="esc-panel">
+          <h3 class="panel-title">Should you escalate?</h3>
+          <p class="esc-intro">Tick everything that applies. Be honest — escalating too early wastes L2's time, too late blocks the user.</p>
+
+          <ul class="esc-list" id="escList">
+            <li>
+              <label>
+                <input type="checkbox" data-esc="access" />
+                <span class="esc-box" aria-hidden="true"></span>
+                <span class="esc-text"><strong>It needs access I don't have</strong>Domain admin, network or firewall change, vendor-only tool, server-side fix.</span>
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" data-esc="hardware" />
+                <span class="esc-box" aria-hidden="true"></span>
+                <span class="esc-text"><strong>Possible hardware failure or data loss</strong>Clicking drive, burning smell, repeated BSOD, failing S.M.A.R.T. health.</span>
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" data-esc="security" />
+                <span class="esc-box" aria-hidden="true"></span>
+                <span class="esc-text"><strong>Security concern</strong>Malware, ransomware, phishing, suspicious sign-in, missing or stolen device.</span>
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" data-esc="critical" />
+                <span class="esc-box" aria-hidden="true"></span>
+                <span class="esc-text"><strong>Multiple users or a critical system</strong>Whole team, shared printer, file share, line-of-business app down.</span>
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" data-esc="unresolved" />
+                <span class="esc-box" aria-hidden="true"></span>
+                <span class="esc-text"><strong>Still broken after the standard L1 steps</strong>The documented procedure didn't fix it and you have evidence to show that.</span>
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" data-esc="blocked" />
+                <span class="esc-box" aria-hidden="true"></span>
+                <span class="esc-text"><strong>User is blocked right now</strong>They cannot do their work at all while the ticket waits.</span>
+              </label>
+            </li>
+          </ul>
+        </div>
+
+        <div class="esc-verdict" id="escVerdict" data-level="hold">
+          <span class="verdict-badge" id="verdictBadge">KEEP AT L1</span>
+          <p class="verdict-text" id="verdictText">Nothing ticked yet. Keep working the documented L1 steps and record what you find.</p>
+          <ul class="verdict-reasons" id="verdictReasons"></ul>
+
+          <div class="esc-actions">
+            <button class="btn btn-primary" type="button" id="escalateBtn">⚠ Add escalation to note</button>
+            <button class="btn btn-ghost" type="button" id="removeEscalation" hidden>Remove escalation</button>
+          </div>
+          <p class="esc-hint">Adding escalation fills in the reason, what was already tried, impact and urgency — so L2 doesn't start from zero.</p>
+        </div>
+      </div>
+
+      <!-- anatomy -->
+      <div class="anatomy">
+        <h3 class="panel-title">How a real support note is built</h3>
+        <div class="anatomy-grid">
+          <div class="anatomy-col good">
+            <h4><span aria-hidden="true">✓</span> Good note</h4>
+            <pre>Issue: Print job stuck in the queue.
+Impact: One user blocked from printing invoices.
+Checked: Printer online, correct printer selected,
+         cancel from queue failed.
+Action: Stopped Print Spooler, cleared local queue
+        with approval, restarted service.
+Result: Test page and original document printed.
+Status: Resolved. Next step: none.</pre>
+          </div>
+          <div class="anatomy-col bad">
+            <h4><span aria-hidden="true">✕</span> Note that helps nobody</h4>
+            <pre>Printer not working.
+Restarted stuff.
+Still not working.
+
+— no model, no error text,
+  no checks, no action taken.</pre>
+          </div>
+        </div>
+        <ul class="anatomy-list">
+          <li><strong>Issue</strong> — the user's words, in one line.</li>
+          <li><strong>Impact</strong> — one user or many, and what work is stopped.</li>
+          <li><strong>Checked</strong> — the things you ruled out; this stops the next tech repeating them.</li>
+          <li><strong>Action</strong> — exactly what you changed or ran.</li>
+          <li><strong>Result</strong> — what happened after, tested with the user where possible.</li>
+          <li><strong>Status / next step</strong> — resolved, monitoring, waiting, or escalated and why.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 04 · REFERENCES ============ -->
+  <section class="section section-alt" id="references">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">References</h2>
+        <p class="section-subtitle">Sources for the commands, behaviours and support statements used in this guide. All links checked 19 November 2025.</p>
+      </div>
+
+      <ol class="refs-list">
+        <li>
+          <span class="refs-num">1</span>
+          <div class="refs-body">
+            <p class="refs-cite">Microsoft. <em>Net user</em>. Windows Commands reference, Microsoft Learn.</p>
+            <a class="refs-url" href="https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/net-user" target="_blank" rel="noopener">learn.microsoft.com › windows-commands › net-user <span aria-hidden="true">↗</span></a>
+          </div>
+        </li>
+        <li>
+          <span class="refs-num">2</span>
+          <div class="refs-body">
+            <p class="refs-cite">Microsoft. <em>Use the System File Checker tool to repair missing or corrupted system files</em>. Windows support.</p>
+            <a class="refs-url" href="https://support.microsoft.com/en-us/windows/experience/backup-recovery/using-system-file-checker-in-windows" target="_blank" rel="noopener">support.microsoft.com › using-system-file-checker-in-windows <span aria-hidden="true">↗</span></a>
+          </div>
+        </li>
+        <li>
+          <span class="refs-num">3</span>
+          <div class="refs-body">
+            <p class="refs-cite">Microsoft. <em>chkdsk</em>. Windows Commands reference, Microsoft Learn.</p>
+            <a class="refs-url" href="https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/chkdsk" target="_blank" rel="noopener">learn.microsoft.com › windows-commands › chkdsk <span aria-hidden="true">↗</span></a>
+          </div>
+        </li>
+        <li>
+          <span class="refs-num">4</span>
+          <div class="refs-body">
+            <p class="refs-cite">Microsoft. <em>Enable Remote Desktop on your PC</em>. Remote Desktop Services documentation.</p>
+            <a class="refs-url" href="https://learn.microsoft.com/en-us/windows-server/remote/remote-desktop-services/remotepc/remote-desktop-allow-access" target="_blank" rel="noopener">learn.microsoft.com › remote-desktop-allow-access <span aria-hidden="true">↗</span></a>
+          </div>
+        </li>
+        <li>
+          <span class="refs-num">5</span>
+          <div class="refs-body">
+            <p class="refs-cite">Microsoft. <em>Device encryption in Windows</em>. Windows security documentation.</p>
+            <a class="refs-url" href="https://support.microsoft.com/en-gb/windows/security/encryption/device-encryption-in-windows" target="_blank" rel="noopener">support.microsoft.com › device-encryption-in-windows <span aria-hidden="true">↗</span></a>
+          </div>
+        </li>
+        <li>
+          <span class="refs-num">6</span>
+          <div class="refs-body">
+            <p class="refs-cite">Microsoft. <em>Windows 10 support has ended on October 14, 2025</em>. Windows lifecycle documentation.</p>
+            <a class="refs-url" href="https://support.microsoft.com/en-us/windows/deployment/updates-lifecycle/windows-10-support-has-ended-on-october-14-2025" target="_blank" rel="noopener">support.microsoft.com › windows-10-support-has-ended <span aria-hidden="true">↗</span></a>
+          </div>
+        </li>
+        <li>
+          <span class="refs-num">7</span>
+          <div class="refs-body">
+            <p class="refs-cite">Microsoft. <em>Printer not responding</em>. Windows Server troubleshooting.</p>
+            <a class="refs-url" href="https://learn.microsoft.com/en-us/troubleshoot/windows-server/printing/printer-not-responding" target="_blank" rel="noopener">learn.microsoft.com › printing › printer-not-responding <span aria-hidden="true">↗</span></a>
+          </div>
+        </li>
+      </ol>
+
+      <p class="refs-foot">
+        Citation style: organisation, title, collection, link. Command syntax changes between Windows versions —
+        check the linked page for the build you're supporting before running a repair command.
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container footer-bottom">
+    <span class="copyright">© 2026 <a href="https://github.com/ahmedaryan-sec" target="_blank" rel="noopener">ahmedaryan-sec</a></span>
+    <span class="footer-name">Windows Admin · IT Support Field Guide · φ 1.618</span>
+  </div>
+</footer>
+
+<!-- back to top -->
+<button class="to-top" id="toTop" type="button" aria-label="Back to top" title="Back to top">↑</button>
+
+<!-- ============ MODAL ============ -->
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
+  <div class="modal-backdrop" data-close></div>
+  <div class="modal-panel" role="document">
+    <header class="modal-head">
+      <div class="modal-heading">
+        <span class="modal-num" id="modalNum">BOX 00</span>
+        <h2 class="modal-title" id="modalTitle">Box</h2>
+        <p class="modal-sub" id="modalSub"></p>
+      </div>
+      <button class="modal-close" type="button" data-close aria-label="Close box">✕</button>
+    </header>
+
+    <div class="modal-meter">
+      <span class="meter-text" id="modalMeterText">0 / 0 complete</span>
+      <span class="meter-track"><span class="meter-fill" id="modalMeterFill"></span></span>
+    </div>
+
+    <div class="modal-body" id="modalBody"></div>
+
+    <footer class="modal-foot">
+      <button class="btn btn-ghost" type="button" id="modalReset">Reset this box</button>
+      <div class="modal-nav">
+        <button class="btn btn-ghost" type="button" id="modalPrev">← Previous</button>
+        <button class="btn btn-primary" type="button" id="modalNext">Next box →</button>
+      </div>
+    </footer>
+  </div>
+</div>
+
+<!-- ============================================================
+     BOX CONTENT TEMPLATES
+     ============================================================ -->
+
+<!-- BOX 01 · EDITIONS -->
+<template id="tpl-editions" data-title="Check the Windows Edition" data-num="BOX 01"
+          data-sub="Before troubleshooting a missing Windows feature, check which edition is installed.">
+  <ol class="step-list">
+    <li class="step">
+      <label class="step-label">
+        <input type="checkbox" data-step-id="ed-1" />
+        <span class="step-box" aria-hidden="true"></span>
+        <span class="step-content">
+          <span class="step-title">Run <code class="inline">winver</code></span>
+          <span class="step-text">Press <kbd>Win</kbd> + <kbd>R</kbd>, type <code class="inline">winver</code>, and press Enter.</span>
+        </span>
+      </label>
+      <div class="code-block"><code>winver</code><button class="copy-btn" type="button" data-copy="winver">Copy</button></div>
+    </li>
+
+    <li class="step">
+      <label class="step-label">
+        <input type="checkbox" data-step-id="ed-2" />
+        <span class="step-box" aria-hidden="true"></span>
+        <span class="step-content">
+          <span class="step-title">Confirm in Settings</span>
+          <span class="step-text">Also available at <strong>Settings &gt; System &gt; About</strong> — edition, version, and build number.</span>
+        </span>
+      </label>
+    </li>
+
+    <li class="step">
+      <label class="step-label">
+        <input type="checkbox" data-step-id="ed-3" />
+        <span class="step-box" aria-hidden="true"></span>
+        <span class="step-content">
+          <span class="step-title">Record the edition in the ticket</span>
+          <span class="step-text">Home, Pro, or Enterprise — the next technician needs this before anything else.</span>
+        </span>
+      </label>
+    </li>
+
+    <li class="step">
+      <label class="step-label">
+        <input type="checkbox" data-step-id="ed-4" />
+        <span class="step-box" aria-hidden="true"></span>
+        <span class="step-content">
+          <span class="step-title">Rule out Home-only limitations</span>
+          <span class="step-text">If the device is Home, these features are simply not there — no further troubleshooting will change that.</span>
+        </span>
+      </label>
+      <div class="table-wrap">
+        <table class="compare-table">
+          <thead>
+            <tr><th scope="col">Feature</th><th scope="col">Home</th><th scope="col">Pro</th><th scope="col">Enterprise</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Join an on-premises Active Directory domain</th><td class="no">No</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+            <tr><th scope="row">Local Group Policy Editor</th><td class="no">No</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+            <tr><th scope="row">Local Users and Groups</th><td class="no">No</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+            <tr><th scope="row">Full BitLocker management</th><td class="no">No</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+            <tr><th scope="row">Remote Desktop host</th><td class="no">No</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </li>
+
+    <li class="step">
+      <label class="step-label">
+        <input type="checkbox" data-step-id="ed-5" />
+        <span class="step-box" aria-hidden="true"></span>
+        <span class="step-content">
+          <span class="step-title">Remember the two Home exceptions</span>
+          <span class="step-text">Device Encryption on Home is not full BitLocker management. Home can connect <em>to</em> another PC over Remote Desktop, but cannot act as the host.</span>
+        </span>
+      </label>
+    </li>
+
+    <li class="step">
+      <label class="step-label">
+        <input type="checkbox" data-step-id="ed-6" />
+        <span class="step-box" aria-hidden="true"></span>
+        <span class="step-content">
+          <span class="step-title">Keep investigating beyond the edition</span>
+          <span class="step-text">A domain-join failure can also be network access, DNS, permissions, or company policy.</span>
+        </span>
+      </label>
+    </li>
+
+    <li class="step">
+      <label class="step-label">
+        <input type="checkbox" data-step-id="ed-7" />
+        <span class="step-box" aria-hidden="true"></span>
+        <span class="step-content">
+          <span class="step-title">Check the support status</span>
+          <span class="step-text">Regular support for most Windows 10 editions ended 14 Oct 2025 — for work devices, check the organisation's upgrade or ESU plan.</span>
+        </span>
+      </label>
+    </li>
+  </ol>
+</template>
+
+<!-- BOX 02 · ACCOUNTS -->
+<template id="tpl-accounts" data-title="Local Accounts with CMD" data-num="BOX 02"
+          data-sub="Open Command Prompt as administrator. These manage the local computer, not Active Directory.">
+  <div class="modal-note warn"><span aria-hidden="true">⚠</span> Only reset a password after confirming identity and following company procedure. Check the actual need before granting administrator access.</div>
+  <ol class="step-list">
+    <li class="step">
+      <label class="step-label">
+        <input type="checkbox" data-step-id="ac-1" />
+        <span class="step-box" aria-hidden="true"></span>
+        <span class="step-content">
+          <span class="step-title">List local users</span>
+          <span class="step-text">Confirm the exact account name before changing anything.</span>
+        </span>
+      </label>
+      <div class="code-block"><code>net user</code><button class="copy-btn" type="button" data-copy="net user">Copy</button></div>
+    </li>
+    <li class="step">
+      <label class="step-label">
+        <input type="checkbox" data-step-id="ac-2" />
+        <span class="step-box" aria-hidden="true"></span>
+        <span class="step-content">
+          <span class="step-title">Create a local user</span>
+          <span class="step-text">The <code class="inline">*</code> asks for the password instead of putting it in the command. Use a password that meets the organisation's rules.</span>
+        </span>
+      </label>
+      <div class="code-block"><code>net user TechUser * /add</code><button class="copy-btn" type="button" data-copy="net user TechUser * /add">Copy</button></div>
+    </li>
+    <li class="step">
+      <label class="step-label">
+        <input type="checkbox" data-step-id="ac-3" />
+        <span class="step-box" aria-hidden="true"></span>
+        <span class="step-content">
+          <span class="step-title">Change a password</span>
+          <span class="step-text">Verify the user's identity first and record that the reset was requested and approved.</span>
+        </span>
+      </label>
+      <div class="code-block"><code>net user TechUser *</code><button class="copy-btn" type="button" data-copy="net user TechUser *">Copy</button></div>
+    </li>
+    <li class="step">
+      <label class="step-label">
+        <input type="checkbox" data-step-id="ac-4" />
+        <span class="step-box" aria-hidden="true"></span>
+        <span class="step-content">
+          <span class="step-title">Add to local Administrators</span>
+          <span class="step-text">The group name may differ on non-English Windows installations.</span>
+        </span>
+      </label>
+      <div class="code-block"><code>net localgroup Administrators TechUser /add</code><button class="copy-btn" type="button" data-copy="net localgroup Administrators TechUser /add">Copy</button></div>
+    </li>
+    <li class="step">
+      <label class="step-label">
+        <input type="checkbox" data-step-id="ac-5" />
+        <span class="step-box" aria-hidden="true"></span>
+        <span class="step-content">
+          <span class="step-title">Enable a disabled account</span>
+          <span class="step-text">This does <strong>not</strong> clear a lockout caused by failed sign-in attempts.</span>
+        </span>
+      </label>
+      <div class="code-block"><code>net user TechUser /active:yes</code><button class="copy-btn" type="button" data-copy="net user TechUser /active:yes">Copy</button></div>
+    </li>
+    <li class="step">
+      <label class="step-label">
+        <input type="checkbox" data-step-id="ac-6" />
+        <span class="step-box" aria-hidden="true"></span>
+        <span class="step-content">
+          <span class="step-title">Disable an account</span>
+          <span class="step-text">Confirm with the user's manager or the ticket before removing access.</span>
+        </span>
+      </label>
+      <div class="code-block"><code>net user TechUser /active:no</code><button class="copy-btn" type="button" data-copy="net user TechUser /active:no">Copy</button></div>
+    </li>
+    <li class="step">
+      <label class="step-label">
+        <input type="checkbox" data-step-id="ac-7" />
+        <span class="step-box" aria-hidden="true"></span>
+        <span class="step-content">
+          <span class="step-title">Delete an account</span>
+          <span class="step-text">Check the username and policy first. This does not remove the user-profile files automatically.</span>
+        </span>
+      </label>
+      <div class="code-block"><code>net user TechUser /delete</code><button class="copy-btn" type="button" data-copy="net user TechUser /delete">Copy</button></div>
+    </li>
+  </ol>
+</template>
+
+<!-- BOX 03 · REPAIR -->
+<template id="tpl-repair" data-title="Repair &amp; Diagnostics" data-num="BOX 03"
+          data-sub="Use the command that matches what you found — not all of them.">
+  <ol class="step-list">
+    <li class="step">
+      <label class="step-label">
+        <input type="checkbox" data-step-id="rp-1" />
+        <span class="step-box" aria-hidden="true"></span>
+        <span class="step-content">
+          <span class="step-title">Repair the Windows image (DISM)</span>
+          <span class="step-text">First step when components or system files seem corrupted. Run in an elevated prompt and read the result.</span>
+        </span>
+      </label>
+      <div class="code-block"><code>DISM /Online /Cleanup-Image /RestoreHealth</code><button class="copy-btn" type="button" data-copy="DISM /Online /Cleanup-Image /RestoreHealth">Copy</button></div>
+    </li>
+    <li class="step">
+      <label class="step-label">
+        <input type="checkbox" data-step-id="rp-2" />
+        <span class="step-box" aria-hidden="true"></span>
+        <span class="step-content">
+          <span class="step-title">Check protected system files (SFC)</span>
+          <span class="step-text">Run after DISM. It tries to replace damaged copies and reports whether it could.</span>
+        </span>
+      </label>
+      <div class="code-block"><code>sfc /scannow</code><button class="copy-btn" type="button" data-copy="sfc /scannow">Copy</button></div>
+    </li>
+    <li class="step">
+      <label class="step-label">
+        <input type="checkbox" data-step-id="rp-3" />
+        <span class="step-box" aria-hidden="true"></span>
+        <span class="step-content">
+          <span class="step-title">Scan the file system</span>
+          <span class="step-text">Online scan of C: first — it does not need a reboot.</span>
+        </span>
+      </label>
+      <div class="code-block"><code>chkdsk C: /scan</code><button class="copy-btn" type="button" data-copy="chkdsk C: /scan">Copy</button></div>
+    </li>
+    <li class="step">
+      <label class="step-label">
+        <input type="checkbox" data-step-id="rp-4" />
+        <span class="step-box" aria-hidden="true"></span>
+        <span class="step-content">
+          <span class="step-title">Repair file-system errors</span>
+          <span class="step-text">Windows may schedule this for the next restart because C: is in use — arrange downtime first. <code class="inline">/r</code> checks for bad sectors and takes much longer, so it isn't a default step. If a drive may be failing, protect the data first.</span>
+        </span>
+      </label>
+      <div class="code-block"><code>chkdsk C: /f</code><button class="copy-btn" type="button" data-copy="chkdsk C: /f">Copy</button></div>
+    </li>
+    <li class="step">
+      <label class="step-label">
+        <input type="checkbox" data-step-id="rp-5" />
+        <span class="step-box" aria-hidden="true"></span>
+        <span class="step-content">
+          <span class="step-title">Read the network configuration</span>
+          <span class="step-text">IP address, gateway, DNS servers, and adapter details in one output — copy the relevant lines into the ticket.</span>
+        </span>
+      </label>
+      <div class="code-block"><code>ipconfig /all</code><button class="copy-btn" type="button" data-copy="ipconfig /all">Copy</button></div>
+    </li>
+    <li class="step">
+      <label class="step-label">
+        <input type="checkbox" data-step-id="rp-6" />
+        <span class="step-box" aria-hidden="true"></span>
+        <span class="step-content">
+          <span class="step-title">Renew the DHCP lease</span>
+          <span class="step-text">Only if the device is on DHCP and there is a lease problem. This briefly drops the connection — avoid it during a remote session unless you have another way back in.</span>
+        </span>
+      </label>
+      <div class="code-block"><code>ipconfig /release
+ipconfig /renew</code><button class="copy-btn" type="button" data-copy="ipconfig /release&#10;ipconfig /renew">Copy</button></div>
+    </li>
+    <li class="step">
+      <label class="step-label">
+        <input type="checkbox" data-step-id="rp-7" />
+        <span class="step-box" aria-hidden="true"></span>
+        <span class="step-content">
+          <span class="step-title">Flush the DNS cache</span>
+          <span class="step-text">For stale or wrong name resolution. This does not change the configured DNS server.</span>
+        </span>
+      </label>
+      <div class="code-block"><code>ipconfig /flushdns</code><button class="copy-btn" type="button" data-copy="ipconfig /flushdns">Copy</button></div>
+    </li>
+    <li class="step">
+      <label class="step-label">
+        <input type="checkbox" data-step-id="rp-8" />
+        <span class="step-box" aria-hidden="true"></span>
+        <span class="step-content">
+          <span class="step-title">List processes</span>
+          <span class="step-text">Find the actual process name and PID before closing anything.</span>
+        </span>
+      </label>
+      <div class="code-block"><code>tasklist
+tasklist | findstr /I chrome</code><button class="copy-btn" type="button" data-copy="tasklist&#10;tasklist | findstr /I chrome">Copy</button></div>
+    </li>
+    <li class="step">
+      <label class="step-label">
+        <input type="checkbox" data-step-id="rp-9" />
+        <span class="step-box" aria-hidden="true"></span>
+        <span class="step-content">
+          <span class="step-title">End an unresponsive process</span>
+          <span class="step-text">Try closing the app normally first. Prefer the specific PID; <code class="inline">/IM</code> closes every matching process and can lose unsaved work.</span>
+        </span>
+      </label>
+      <div class="code-block"><code>taskkill /PID 1234 /F
+taskkill /IM chrome.exe /F</code><button class="copy-btn" type="button" data-copy="taskkill /PID 1234 /F&#10;taskkill /IM chrome.exe /F">Copy</button></div>
+    </li>
+  </ol>
+</template>
+
+<!-- BOX 04 · SPOOLER -->
+<template id="tpl-spooler" data-title="Print Jobs Stuck in the Queue" data-num="BOX 04"
+          data-sub="A user sends a document but the job stays in the queue and nothing prints.">
+  <div class="modal-note warn"><span aria-hidden="true">⚠</span> Clearing the queue removes <strong>all pending jobs</strong> on that computer, not just the stuck one. Check with affected users before clearing a shared queue.</div>
+  <ol class="step-list">
+    <li class="step">
+      <label class="step-label">
+        <input type="checkbox" data-step-id="sp-1" />
+        <span class="step-box" aria-hidden="true"></span>
+        <span class="step-content">
+          <span class="step-title">Check before resetting anything</span>
+          <span class="step-text">Is the printer online and reachable? Is the correct printer selected? Can the job be cancelled from the queue?</span>
+        </span>
+      </label>
+    </li>
+    <li class="step">
+      <label class="step-label">
+        <input type="checkbox" data-step-id="sp-2" />
+        <span class="step-box" aria-hidden="true"></span>
+        <span class="step-content">
+          <span class="step-title">Stop the Print Spooler service</span>
+          <span class="step-text">Elevated Command Prompt on the affected computer.</span>
+        </span>
+      </label>
+      <div class="code-block"><code>net stop spooler</code><button class="copy-btn" type="button" data-copy="net stop spooler">Copy</button></div>
+    </li>
+    <li class="step">
+      <label class="step-label">
+        <input type="checkbox" data-step-id="sp-3" />
+        <span class="step-box" aria-hidden="true"></span>
+        <span class="step-content">
+          <span class="step-title">Clear the spool files</span>
+          <span class="step-text">Deletes the queued files only — do not delete the <code class="inline">PRINTERS</code> folder itself.</span>
+        </span>
+      </label>
+      <div class="code-block"><code>del /Q /F "%SystemRoot%\System32\spool\PRINTERS\*"</code><button class="copy-btn" type="button" data-copy="del /Q /F &quot;%SystemRoot%\System32\spool\PRINTERS\*&quot;">Copy</button></div>
+    </li>
+    <li class="step">
+      <label class="step-label">
+        <input type="checkbox" data-step-id="sp-4" />
+        <span class="step-box" aria-hidden="true"></span>
+        <span class="step-content">
+          <span class="step-title">Start the service again</span>
+          <span class="step-text">Confirm it reports started and that the service is set to the expected startup type.</span>
+        </span>
+      </label>
+      <div class="code-block"><code>net start spooler</code><button class="copy-btn" type="button" data-copy="net start spooler">Copy</button></div>
+    </li>
+    <li class="step">
+      <label class="step-label">
+        <input type="checkbox" data-step-id="sp-5" />
+        <span class="step-box" aria-hidden="true"></span>
+        <span class="step-content">
+          <span class="step-title">Send a test page</span>
+          <span class="step-text">Check whether it leaves the queue. If printing still fails, look at the printer connection, the driver, and Event Viewer.</span>
+        </span>
+      </label>
+    </li>
+    <li class="step">
+      <label class="step-label">
+        <input type="checkbox" data-step-id="sp-6" />
+        <span class="step-box" aria-hidden="true"></span>
+        <span class="step-content">
+          <span class="step-title">Confirm and record</span>
+          <span class="step-text">Ask the user to resend their document, then write the outcome into the ticket.</span>
+        </span>
+      </label>
+    </li>
+  </ol>
+</template>
+
+<script src="script.js"></script>
+</body>
+</html>
