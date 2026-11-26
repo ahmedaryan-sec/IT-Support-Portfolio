@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TuxDesk: Linux helpdesk reference for Tier 1 and Tier 2</title>
+<meta name="description" content="A Linux desk reference for support work: a searchable directory explorer, nine ticket playbooks with checklists, and a command reference for technicians.">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0b0b0a">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Crect%20width%3D%2224%22%20height%3D%2224%22%20rx%3D%224%22%20fill%3D%22%23f4f1e9%22%2F%3E%3Cpath%20d%3D%22M12%201.9C8.5%201.9%206%204.4%206%208c0%201.2.3%202.3.8%203.2C5.3%2013%204.7%2015.7%205.3%2018c.6%202.4%203%204%206.7%204s6.1-1.6%206.7-4c.6-2.3%200-5-1.5-6.8.5-.9.8-2%20.8-3.2%200-3.6-2.5-6.1-6-6.1Z%22%20fill%3D%22%230c0c0b%22%2F%3E%3Cellipse%20cx%3D%2212%22%20cy%3D%2216.1%22%20rx%3D%223.7%22%20ry%3D%224.4%22%20fill%3D%22%23f4f1e9%22%2F%3E%3Cellipse%20cx%3D%229.9%22%20cy%3D%226.9%22%20rx%3D%221.7%22%20ry%3D%222%22%20fill%3D%22%23f4f1e9%22%2F%3E%3Cellipse%20cx%3D%2214.1%22%20cy%3D%226.9%22%20rx%3D%221.7%22%20ry%3D%222%22%20fill%3D%22%23f4f1e9%22%2F%3E%3Ccircle%20cx%3D%2210.1%22%20cy%3D%227.2%22%20r%3D%22.8%22%20fill%3D%22%230c0c0b%22%2F%3E%3Ccircle%20cx%3D%2213.9%22%20cy%3D%227.2%22%20r%3D%22.8%22%20fill%3D%22%230c0c0b%22%2F%3E%3Cpath%20d%3D%22M10.2%209.6h3.6c0%201.6-.8%202.5-1.8%202.5s-1.8-.9-1.8-2.5Z%22%20fill%3D%22%23f5a300%22%2F%3E%3Cellipse%20cx%3D%228.9%22%20cy%3D%2221.7%22%20rx%3D%222.5%22%20ry%3D%221.35%22%20fill%3D%22%23f5a300%22%2F%3E%3Cellipse%20cx%3D%2215.1%22%20cy%3D%2221.7%22%20rx%3D%222.5%22%20ry%3D%221.35%22%20fill%3D%22%23f5a300%22%2F%3E%3C%2Fsvg%3E">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="masthead">
+  <div class="wrap masthead-inner">
+    <a class="brand" href="#top">
+      <svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M12 1.9C8.5 1.9 6 4.4 6 8c0 1.2.3 2.3.8 3.2C5.3 13 4.7 15.7 5.3 18c.6 2.4 3 4 6.7 4s6.1-1.6 6.7-4c.6-2.3 0-5-1.5-6.8.5-.9.8-2 .8-3.2 0-3.6-2.5-6.1-6-6.1Z" fill="#0c0c0b" stroke="#d9d5cc" stroke-width="0.65"/>
+        <ellipse cx="12" cy="16.1" rx="3.7" ry="4.4" fill="#f4f1e9"/>
+        <ellipse cx="9.9" cy="6.9" rx="1.7" ry="2" fill="#f4f1e9"/>
+        <ellipse cx="14.1" cy="6.9" rx="1.7" ry="2" fill="#f4f1e9"/>
+        <circle cx="10.1" cy="7.2" r="0.8" fill="#0c0c0b"/>
+        <circle cx="13.9" cy="7.2" r="0.8" fill="#0c0c0b"/>
+        <path d="M10.2 9.6h3.6c0 1.6-.8 2.5-1.8 2.5s-1.8-.9-1.8-2.5Z" fill="#f5a300"/>
+        <ellipse cx="8.9" cy="21.7" rx="2.5" ry="1.35" fill="#f5a300" stroke="#d9d5cc" stroke-width="0.5"/>
+        <ellipse cx="15.1" cy="21.7" rx="2.5" ry="1.35" fill="#f5a300" stroke="#d9d5cc" stroke-width="0.5"/>
+      </svg>
+      <span class="brand-name">TuxDesk</span>
+      <span class="brand-sub">Linux support reference</span>
+    </a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#directories">Directories</a>
+      <a href="#playbook">Ticket playbook</a>
+      <a href="#basics">Technician basics</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="intro wrap" id="top" aria-labelledby="intro-title">
+    <h1 id="intro-title">A desk reference for Linux tickets<span class="dot">.</span></h1>
+    <div class="intro-grid">
+      <div class="intro-lead">
+        <p>This is a working reference for Tier 1 and Tier 2 technicians who already have a ticket open. It covers the filesystem locations you will be asked about, nine common failure patterns with a checklist for each, and the syntax for the commands you reach for while diagnosing.</p>
+        <p>Work in this order: look up a path you do not recognise, open the playbook that matches the symptom, then confirm the command before you run it. A playbook is a starting point, not a diagnosis.</p>
+      </div>
+      <div class="intro-side">
+        <h2 class="small-head">Before you type</h2>
+        <ul class="plain-list">
+          <li>Confirm the host, the affected user, and whether it is production.</li>
+          <li>Read the exact error text. The last line is often the least useful.</li>
+          <li>Check you have authority to change the host, and know how to undo it.</li>
+          <li>Adapt every example to your environment and your organization's policy.</li>
+        </ul>
+      </div>
+    </div>
+    <dl class="facts">
+      <div><dt>Directory entries</dt><dd>22</dd></div>
+      <div><dt>Ticket playbooks</dt><dd>09</dd></div>
+      <div><dt>Command groups</dt><dd>08</dd></div>
+      <div><dt>Runs offline</dt><dd>Static files, no server</dd></div>
+    </dl>
+  </section>
+
+  <section class="section wrap" id="directories" aria-labelledby="dir-title">
+    <div class="section-head">
+      <div class="section-title-row">
+        <h2 id="dir-title">Directory explorer</h2>
+        <p class="section-meta">22 locations · FHS 3.0 baseline</p>
+      </div>
+      <p class="lede">Search by path or purpose, then read the support note for that location. This is the common standard set, not every directory that can exist on a Linux system.</p>
+    </div>
+
+    <div class="explorer">
+      <div class="explorer-list-col">
+        <div class="search-field">
+          <label class="visually-hidden" for="dir-search">Search directories</label>
+          <svg class="search-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="7" cy="7" r="4.6" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="m10.4 10.4 3.4 3.4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+          <input type="search" id="dir-search" placeholder="Search paths, e.g. logs, mount, library" autocomplete="off" aria-describedby="dir-search-hint" aria-controls="dir-list">
+        </div>
+        <p class="field-hint" id="dir-search-hint">Arrow keys move the selection.</p>
+        <div class="list-frame">
+          <ul class="dir-list" id="dir-list" aria-label="Linux directories"></ul>
+          <div class="empty-state" id="dir-empty" hidden>
+            <p class="empty-title">No directory matches that search.</p>
+            <p>Try a shorter term: <code>log</code>, <code>var</code>, <code>mount</code>, or a full path such as <code>/etc</code>.</p>
+            <button type="button" class="btn btn-quiet" id="dir-clear">Clear search</button>
+          </div>
+        </div>
+        <p class="list-status" id="dir-status" role="status" aria-live="polite"></p>
+      </div>
+
+      <div class="explorer-detail" id="dir-detail" aria-live="polite" tabindex="-1"></div>
+    </div>
+
+    <div class="note-row">
+      <div class="note">
+        <h3 class="note-title">Layouts differ between distributions</h3>
+        <p>On most current distributions <code>/bin</code>, <code>/sbin</code>, and <code>/lib</code> are symlinks into <code>/usr</code> (the "merged /usr" setup). Debian and Ubuntu moved to this by default in recent releases, Fedora and Arch moved earlier. Check with <code>ls -ld /bin /sbin /lib</code> instead of assuming either layout.</p>
+      </div>
+      <div class="note note-accent">
+        <h3 class="note-title">/root is not /</h3>
+        <p><code>/root</code> is the home directory of the root user, normally mode 0700. <code>/</code> is the root of the filesystem tree. Commands that work on one say nothing about the other.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section wrap" id="playbook" aria-labelledby="playbook-title">
+    <div class="section-head">
+      <div class="section-title-row">
+        <h2 id="playbook-title">Ticket playbook</h2>
+        <p class="section-meta">9 tickets · checklists saved in this browser</p>
+      </div>
+      <p class="lede">Open the box that matches what the user reported. Each checklist starts with scope and authorization, then moves through diagnosis, a decision point, and verification with the user.</p>
+      <div class="search-field search-field-wide">
+        <label class="visually-hidden" for="ticket-search">Filter tickets</label>
+        <svg class="search-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="7" cy="7" r="4.6" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="m10.4 10.4 3.4 3.4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        <input type="search" id="ticket-search" placeholder="Filter tickets, e.g. disk, cron, permission" autocomplete="off" aria-controls="ticket-grid">
+      </div>
+      <p class="list-status" id="ticket-status" role="status" aria-live="polite">9 tickets shown</p>
+      <div class="empty-state" id="ticket-empty" hidden>
+        <p class="empty-title">No ticket matches that filter.</p>
+        <p>Try <code>disk</code>, <code>cron</code>, <code>network</code>, or <code>password</code>.</p>
+        <button type="button" class="btn btn-quiet" id="ticket-clear">Clear filter</button>
+      </div>
+      <p class="storage-status" id="storage-status" role="status" aria-live="polite" hidden>
+        Browser storage is unavailable or blocked, so tick marks will reset when you reload or close this tab. The checklists still work.
+      </p>
+    </div>
+
+    <div class="ticket-grid" id="ticket-grid"></div>
+
+    <div class="caution-banner">
+      <p class="caution-label">Adapt before running</p>
+      <p>Every command here is an example. Placeholders shown as <code>&lt;user&gt;</code>, <code>&lt;host&gt;</code>, or <code>&lt;device&gt;</code> must be replaced. Anything that writes, deletes, restarts a service, or changes access needs the approval your organization requires, and a way back.</p>
+    </div>
+  </section>
+
+  <section class="section wrap" id="basics" aria-labelledby="basics-title">
+    <div class="section-head">
+      <div class="section-title-row">
+        <h2 id="basics-title">Technician basics</h2>
+        <p class="section-meta">8 boxes · 29 commands · one example each</p>
+      </div>
+      <p class="lede">The commands used across the playbooks, grouped by what you are trying to find out. Not every command is installed on every system, and flags differ between GNU, BusyBox, and BSD userlands.</p>
+      <div class="search-field search-field-wide">
+        <label class="visually-hidden" for="cmd-search">Search commands</label>
+        <svg class="search-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="7" cy="7" r="4.6" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="m10.4 10.4 3.4 3.4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        <input type="search" id="cmd-search" placeholder="Filter commands, e.g. journal, ownership, port" autocomplete="off" aria-controls="cmd-groups">
+      </div>
+      <p class="list-status" id="cmd-status" role="status" aria-live="polite">29 commands shown</p>
+    </div>
+
+    <div class="cmd-groups" id="cmd-groups"></div>
+    <div class="empty-state" id="cmd-empty" hidden>
+      <p class="empty-title">No command matches that filter.</p>
+      <p>Try <code>chmod</code>, <code>df</code>, <code>ss</code>, or <code>crontab</code>.</p>
+      <button type="button" class="btn btn-quiet" id="cmd-clear">Clear filter</button>
+    </div>
+  </section>
+
+  <section class="section wrap sources" id="sources" aria-labelledby="sources-title">
+    <div class="section-head">
+      <div class="section-title-row">
+        <h2 id="sources-title">Sources and limits</h2>
+        <p class="section-meta">Checked November 2026</p>
+      </div>
+    </div>
+    <div class="sources-grid">
+      <div>
+        <h3 class="small-head">Documentation used</h3>
+        <ul class="source-list">
+          <li><a href="https://refspecs.linuxfoundation.org/FHS_3.0/fhs/index.html" rel="noopener">Filesystem Hierarchy Standard 3.0</a> (directory purposes, merged-/usr notes).</li>
+          <li><a href="https://man7.org/linux/man-pages/man5/proc.5.html" rel="noopener">proc(5)</a> (<code>/proc</code> and process-file behaviour).</li>
+          <li><a href="https://www.freedesktop.org/software/systemd/man/latest/journalctl.html" rel="noopener">journalctl(1)</a> and <a href="https://www.freedesktop.org/software/systemd/man/latest/systemctl.html" rel="noopener">systemctl(1)</a> (log and service inspection).</li>
+          <li><a href="https://man7.org/linux/man-pages/man5/crontab.5.html" rel="noopener">crontab(5)</a>, <a href="https://man7.org/linux/man-pages/man8/cron.8.html" rel="noopener">cron(8)</a>, <a href="https://man7.org/linux/man-pages/man1/crontab.1.html" rel="noopener">crontab(1)</a> (scheduling fields, environment, % escaping).</li>
+          <li><a href="https://www.gnu.org/software/coreutils/manual/html_node/index.html" rel="noopener">GNU Coreutils manual</a> (<code>df</code>, <code>du</code>, <code>cp</code>, <code>mv</code>, <code>ls</code>).</li>
+          <li><a href="https://man7.org/linux/man-pages/man1/rsync.1.html" rel="noopener">rsync(1)</a>, <a href="https://man7.org/linux/man-pages/man8/lsof.8.html" rel="noopener">lsof(8)</a>, <a href="https://man7.org/linux/man-pages/man8/ss.8.html" rel="noopener">ss(8)</a>, <a href="https://man7.org/linux/man-pages/man8/ip.8.html" rel="noopener">ip(8)</a> (copy, open files, sockets, addresses).</li>
+          <li><a href="https://manpages.debian.org/bookworm/apt/apt.8.en.html" rel="noopener">apt(8)</a> (Debian) and <a href="https://dnf.readthedocs.io/en/latest/command_ref.html" rel="noopener">DNF command reference</a> (RHEL family).</li>
+          <li><a href="https://ubuntu.com/server/docs" rel="noopener">Ubuntu Server documentation</a> and <a href="https://docs.fedoraproject.org/en-US/quick-docs/dnf/" rel="noopener">Fedora DNF quick docs</a>.</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="small-head">What this page cannot tell you</h3>
+        <ul class="plain-list">
+          <li>Your distribution's exact defaults. Read <code>/etc/os-release</code> and the vendor docs for the version in front of you.</li>
+          <li>Where your logs and authentication records go. Logging is configured per host and may be shipped to a central system.</li>
+          <li>Whether a fix is approved. Change control, data handling, and incident response come from your organization.</li>
+        </ul>
+        <p class="small">Red Hat's product documentation was not reachable from the build environment, so the RHEL-family notes here rest on the DNF reference and upstream manual pages rather than on Red Hat pages themselves.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <p class="footer-note">Examples only. Check the host, the version, and your policy before running anything that changes state.</p>
+    <p class="copyright">© 2026 ahmedaryan-sec</p>
+  </div>
+</footer>
+
+<dialog class="sheet" id="ticket-sheet" aria-labelledby="sheet-title">
+  <div class="sheet-inner">
+    <header class="sheet-head">
+      <div>
+        <p class="sheet-num" id="sheet-num"></p>
+        <h2 class="sheet-title" id="sheet-title"></h2>
+      </div>
+      <button type="button" class="btn btn-close" id="sheet-close">Close<span aria-hidden="true"> ×</span></button>
+    </header>
+    <div class="sheet-body" id="sheet-body"></div>
+  </div>
+</dialog>
+
+<noscript>
+  <p class="wrap storage-status" style="margin-block:24px">The directory explorer, ticket checklists, and command filter are built by JavaScript. With scripting turned off, this page only shows the static introduction and sources.</p>
+</noscript>
+<script src="script.js"></script>
+</body>
+</html>
