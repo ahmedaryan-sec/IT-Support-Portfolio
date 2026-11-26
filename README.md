@@ -15,6 +15,7 @@ Some of my notes are available as interactive websites.
 | Hardware Fundamentals | [Open Website](https://ahmedaryan-sec.github.io/IT-Support-Portfolio/01-Hardware/website/) | [View Files](01-Hardware/) |
 | Windows BSOD | [Open Website](https://ahmedaryan-sec.github.io/IT-Support-Portfolio/02-Operating-Systems/bsod/) | [View Files](02-Operating-Systems/bsod) |
 | Windows Admin & Diagnostics | [Open Website](https://ahmedaryan-sec.github.io/IT-Support-Portfolio/02-Operating-Systems/windows-admin/) | [View Files](02-Operating-Systems/windows-admin/) |
+| Linux Admin & Diagnostics | [Open Website](https://ahmedaryan-sec.github.io/IT-Support-Portfolio/02-Operating-Systems/linux-admin/) | [View Files](02-Operating-Systems/linux-admin/) |
 | Networking Fundamentals | [Open Website](https://ahmedaryan-sec.github.io/IT-Support-Portfolio/03-Networking/website/) | [View Files](03-Networking/) |
 | PC Boot & Startup Troubleshooting | [Open Website](https://ahmedaryan-sec.github.io/IT-Support-Portfolio/08-Troubleshooting-Scenarios/website/) | [View Files](08-Troubleshooting-Scenarios/) |
 
